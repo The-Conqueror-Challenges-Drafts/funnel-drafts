@@ -1,0 +1,24 @@
+{
+  "page-title": "O1 Landing Page - Japan",
+  "topbar": {
+    "topbar-cta-text": "初月50%オフ - 期間限定オファー！",
+    "topbar-cta-link": "/offer",
+    "topbar-timer-duration": 300,
+    "topbar-timer-format": "mm:ss"
+  },
+  "navbar": {
+    "navbar-logo": "LP OPS1 JP",
+    "navbar-logo-link": "/"
+  },
+  "default": {
+    "default-title": "O1ランディングページ - 日本",
+    "default-description": "素晴らしいO1ランディングページへようこそ",
+    "default-price": 99
+  },
+  "footer": {
+    "footer-logo": "LP OPS1 JP",
+    "footer-logo-link": "/",
+    "footer-description": "すべてのブランド向けのLP OPSセットアップでより良いファネル。",
+    "footer-copyright": "© 2025 LP OPS. 全著作権所有。"
+  }
+}

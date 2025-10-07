@@ -1,0 +1,24 @@
+{
+  "page-title": "O1 Landing Page",
+  "topbar": {
+    "topbar-cta-text": "Get 50% off your first month - Limited time offer!",
+    "topbar-cta-link": "/offer",
+    "topbar-timer-duration": 300,
+    "topbar-timer-format": "mm:ss"
+  },
+  "navbar": {
+    "navbar-logo": "LP OPS1",
+    "navbar-logo-link": "/"
+  },
+  "default": {
+    "default-title": "O1 Landing Page",
+    "default-description": "Welcome to O1 Landing Page, buy the setup for",
+    "default-price": 99
+  },
+  "footer": {
+    "footer-logo": "LP OPS1",
+    "footer-logo-link": "/",
+    "footer-description": "Better Funnels with the LP OPS Setup for all brands.",
+    "footer-copyright": "© 2025 LP OPS. All rights reserved."
+  }
+}

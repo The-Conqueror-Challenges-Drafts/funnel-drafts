@@ -1,0 +1,20 @@
+{
+  "components": {
+    "topbar": {
+      "show": false,
+      "order": 0
+    },
+    "navbar": {
+      "show": true,
+      "order": 1
+    },
+    "default": {
+      "show": true,
+      "order": 2
+    },
+    "footer": {
+      "show": true,
+      "order": 3
+    }
+  }
+}

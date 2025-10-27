@@ -153,6 +153,6 @@ export const gtm = {
 // Extend the Window interface to include dataLayer
 declare global {
   interface Window {
-    dataLayer: any[]
+    dataLayer: GTMDataLayerItem[]
   }
 }

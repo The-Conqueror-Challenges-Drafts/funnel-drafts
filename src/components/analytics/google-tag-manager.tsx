@@ -17,7 +17,7 @@ export function GoogleTagManager({ gtmId }: GoogleTagManagerProps) {
       {/* Google Tag Manager - Head Script */}
       <Script
         id="google-tag-manager"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -64,8 +64,13 @@ type GTMDataLayerItem = Record<string, string | number | boolean | undefined | G
 export const gtm = {
   // Push events to dataLayer
   push: (data: GTMDataLayerItem) => {
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push(data)
+    if (typeof window !== 'undefined' && window.dataLayer && Array.isArray(window.dataLayer)) {
+      try {
+        // Bypass TikTok's hijacked push function by using native Array.prototype.push
+        Array.prototype.push.call(window.dataLayer, data)
+      } catch (error) {
+        console.error('GTM Error:', error)
+      }
     }
   },
 
@@ -128,15 +133,19 @@ export const gtm = {
     leadFirstName: string;
     leadLastName: string;
   }, challengeName: string, challengeImageUrl: string) => {
-   
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        'event': 'Email Lead Submit',
-        'emailLeadType': 'cDCO Email Lead',
-        'emailLeadDetails': JSON.stringify(emailLeadDetails),
-        'challengeName': challengeName,
-        'challengeImageUrl': challengeImageUrl,
-      })
+    if (typeof window !== 'undefined' && window.dataLayer && Array.isArray(window.dataLayer)) {
+      try {
+        // Bypass TikTok's hijacked push function by using native Array.prototype.push
+        window.dataLayer.push({
+          event: 'Email Lead Submit',
+          emailLeadType: 'cDCO Email Lead',
+          emailLeadDetails: JSON.stringify(emailLeadDetails),
+          challengeName: challengeName,
+          challengeImageUrl: challengeImageUrl,
+        })
+      } catch (error) {
+        console.error('GTM Error:', error)
+      }
     }
   }
 }

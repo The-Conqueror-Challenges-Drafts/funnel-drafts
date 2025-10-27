@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Spinner } from '@/components/ui/spinner';
 import { Badge } from '@/components/ui/badge';
+import { initiateCheckout } from '@/hooks/useCheckout';
+import { Spinner } from '@/components/ui/spinner';
 
 interface Testimonial {
   quote: string;
@@ -36,6 +38,7 @@ interface FloatingLabelInputProps {
   value: string;
   onChange: (value: string) => void;
   required?: boolean;
+  error?: string;
 }
 
 const FloatingLabelInput: React.FC<FloatingLabelInputProps> = memo(({
@@ -44,7 +47,8 @@ const FloatingLabelInput: React.FC<FloatingLabelInputProps> = memo(({
   type,
   value,
   onChange,
-  required = false
+  required = false,
+  error
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const isFloating = isFocused || value !== '';
@@ -69,6 +73,16 @@ const FloatingLabelInput: React.FC<FloatingLabelInputProps> = memo(({
     }`;
   }, [isFloating]);
 
+  const inputClasses = useMemo(() => {
+    const baseClasses = "w-full px-4 pt-6 pb-2 text-base text-foreground bg-transparent border rounded-lg focus:outline-none focus:ring-2 transition-colors duration-100";
+    
+    if (error) {
+      return `${baseClasses} border-red-500 focus:ring-red-500/20 focus:border-red-500`;
+    }
+    
+    return `${baseClasses} border-border focus:ring-primary/20 focus:border-primary/30`;
+  }, [error]);
+
   return (
     <div className="relative">
       <input
@@ -79,7 +93,7 @@ const FloatingLabelInput: React.FC<FloatingLabelInputProps> = memo(({
         onFocus={handleFocus}
         onBlur={handleBlur}
         required={required}
-        className="w-full px-4 pt-6 pb-2 text-base text-foreground bg-transparent border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/30 transition-colors duration-100"
+        className={inputClasses}
       />
       <label
         htmlFor={id}
@@ -88,6 +102,11 @@ const FloatingLabelInput: React.FC<FloatingLabelInputProps> = memo(({
         {label}
         {required && <span className="text-muted-foreground/50 ml-1">*</span>}
       </label>
+      {error && (
+        <p className="absolute -bottom-5 left-4 text-sm text-red-500 font-medium">
+          {error}
+        </p>
+      )}
     </div>
   );
 });
@@ -126,12 +145,42 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
     email: ''
   });
 
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
   const handleInputChange = useCallback((field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
-  }, []);
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => {
+        const newErrors = { ...prev };
+        delete newErrors[field];
+        return newErrors;
+      });
+    }
+  }, [errors]);
+
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = () => { 
+    setLoading(true);
+    const result = initiateCheckout(formData.firstName, formData.lastName, formData.email);
+    if (!result?.success && result?.fields) {
+        const newErrors: Record<string, string> = {};
+        if (result.fields.firstName.error) newErrors.firstName = result.fields.firstName.error;
+        if (result.fields.lastName.error) newErrors.lastName = result.fields.lastName.error;
+        if (result.fields.email.error) newErrors.email = result.fields.email.error;
+        setErrors(newErrors);
+        setLoading(false);
+    } else {
+      setTimeout(() => {
+        window.location.href = 'https://store.theconqueror.events/store/single/single?item=1611';
+        // setLoading(false);
+      }, 2000);
+    }
+  }
+  
   return (
     <>
       {/* Reason 2 Section - Testimonials & Form */}
@@ -210,7 +259,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                 <div className="bg-background p-4 py-4 sm:p-5 sm:py-5 md:p-6 md:py-6 lg:p-8 border border-border shadow-lg rounded-lg overflow-visible">
                   <div>
                     {/* Form Fields */}
-                    <div className="space-y-4 mb-6">
+                    <div className="space-y-6 mb-6">
                       <FloatingLabelInput
                         id="firstName"
                         label="First Name"
@@ -218,6 +267,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                         value={formData.firstName}
                         onChange={(value) => handleInputChange('firstName', value)}
                         required
+                        error={errors.firstName}
                       />
                       <FloatingLabelInput
                         id="lastName"
@@ -226,6 +276,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                         value={formData.lastName}
                         onChange={(value) => handleInputChange('lastName', value)}
                         required
+                        error={errors.lastName}
                       />
                       <FloatingLabelInput
                         id="email"
@@ -234,23 +285,28 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                         value={formData.email}
                         onChange={(value) => handleInputChange('email', value)}
                         required
+                        error={errors.email}
                       />
                     </div>
 
                     {/* CTA Section */}
                     <div className="text-center flex flex-col items-center gap-2 mb-4 md:mb-0">
                       <Button
-                        asChild
+                        onClick={() => {
+                          handleSubmit();
+                        }}
+                        disabled={loading}
                         size="lg"
-                        className="w-full font-bold px-8 py-6 text-xl rounded-lg transition-all duration-300"
+                        className="w-full cursor-pointer font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
                       >
-                        <a
-                          href={buttonUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {buttonText}
-                        </a>
+                          {loading ? (
+                            <div className="w-full flex justify-center items-center gap-2">
+                              <p>Reserving your spot...</p>
+                              <Spinner className='w-5 h-5'/>
+                            </div>
+                          ) : (
+                            buttonText
+                          )}
                       </Button>
                       <div className='text-primary text-md'>
                         <span className='font-semibold animate-pulse inline-flex items-center gap-1'>{isLoadingUserCount ? <Spinner/> : currentViewers} People</span> are Viewing this Challenge

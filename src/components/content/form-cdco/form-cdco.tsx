@@ -1,9 +1,12 @@
 'use client';
 
+import { SiAppstore, SiAppstoreHex, SiGoogleplay, SiGoogleplayHex, SiTrustpilot, SiTrustpilotHex } from '@icons-pack/react-simple-icons';
 import React, { useState, useCallback, useMemo, memo } from 'react';
 import Image from 'next/image';
 import { Star, Lock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import { initiateCheckout } from '@/hooks/useCheckout';
 import { Spinner } from '@/components/ui/spinner';
 
@@ -116,6 +119,25 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
   trustIndicators,
   testimonials
 }) => {
+  const [isLoadingUserCount, setIsLoadingUserCount] = useState(false);
+  const generateFakeUserCount = (): number => {
+    setIsLoadingUserCount(true);
+    const baseCount = 17;
+    const maxVariation = 2;
+
+    // Generate a random number between -2 and +2
+    const variation = Math.floor(Math.random() * (maxVariation * 2 + 1)) - maxVariation;
+
+    const count = baseCount + variation;
+    setTimeout(() => {
+      setIsLoadingUserCount(false);
+    }, 1000);
+
+    return count;
+  };
+
+  const currentViewers = useMemo(() => generateFakeUserCount(), []);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -164,6 +186,34 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
       <section className="bg-muted" id="get-started">
         <div className="max-w-7xl px-4 pb-5 sm:px-6 py-4 md:py-8 md:pb-10 mx-auto">
           <div className="max-w-screen-sm mb-4 lg:mb-8">
+            <div className='flex gap-2 items-center mb-2'>
+              <div className="*:data-[slot=avatar]:ring-background flex -space-x-2 *:data-[slot=avatar]:ring-2">
+                <Avatar>
+                  <AvatarImage src="https://randomuser.me/api/portraits/women/75.jpg" alt="@shadcn" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+                <Avatar>
+                  <AvatarImage
+                    src="https://randomuser.me/api/portraits/men/32.jpg"
+                    alt="@maxleiter"
+                  />
+                  <AvatarFallback>LR</AvatarFallback>
+                </Avatar>
+                <Avatar>
+                  <AvatarImage
+                    src="https://randomuser.me/api/portraits/women/41.jpg"
+                    alt="@evilrabbit"
+                  />
+                  <AvatarFallback>ER</AvatarFallback>
+                </Avatar>
+                <Avatar>
+                  <AvatarFallback className="font-semibold text-xs text-primary">4k+</AvatarFallback>
+                </Avatar>
+              </div>
+              <p className='text-primary text-sm md:text-lg font-medium'>
+                Already Joined This Challenge
+              </p>
+            </div>
             <h2 className="mb-4 text-lg sm:text-2xl tracking-tight font-semibold text-black text-left">
               {ctaTitle}
             </h2>
@@ -196,12 +246,12 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                           ))}
                         </div>
                       </div>
-                    </figcaption>    
+                    </figcaption>
                   </figure>
                 ))}
               </div>
             </div>
-            
+
             {/* Right Column: Form Container */}
             <div className="w-full order-1 lg:order-2 min-w-0">
               <div className="w-full lg:sticky lg:top-8">
@@ -237,9 +287,9 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                         error={errors.email}
                       />
                     </div>
-                    
+
                     {/* CTA Section */}
-                    <div className="text-center space-y-6 md:mb-4">
+                    <div className="text-center flex flex-col items-center gap-2 mb-4 md:mb-0">
                       <Button
                         onClick={() => {
                           handleSubmit();
@@ -257,8 +307,11 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                             buttonText
                           )}
                       </Button>
+                      <div className='text-primary text-md'>
+                        <span className='font-semibold animate-pulse inline-flex items-center gap-1'>{isLoadingUserCount ? <Spinner/> : currentViewers} People</span> are Viewing this Challenge
+                      </div>
                     </div>
-                    
+
                     {/* Trust Indicators */}
                     <div>
                       <div className="flex justify-center mt-2 items-center opacity-60 gap-8 sm:gap-10 lg:gap-14 text-sm text-muted-foreground">
@@ -275,6 +328,21 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                       </div>
                     </div>
                   </div>
+                </div>
+
+                <div className='flex gap-2 mt-6 flex-wrap items-center justify-center w-full'>
+                  <Badge variant="ghost" className='text-lg'>
+                    <SiAppstore className={`text-[#0D96F6]! size-6!`}/>
+                    4.8
+                  </Badge>
+                  <Badge variant="ghost" className='text-lg'>
+                    <SiGoogleplay className={`text-[#FBBC04]! size-6!`}/>
+                    4.7
+                  </Badge>
+                  <Badge variant="ghost" className='text-lg'>
+                    <SiTrustpilot className={`text-[${SiTrustpilotHex}] size-6!`}/>
+                    4.9
+                  </Badge>
                 </div>
               </div>
             </div>

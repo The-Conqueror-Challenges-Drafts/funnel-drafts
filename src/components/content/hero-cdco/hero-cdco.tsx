@@ -2,8 +2,10 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { Play } from 'lucide-react';
+import { ChartSpline, Play, Timer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import TimerCountUp from './hero-timer';
 
 interface HeroCdcoProps {
   badge: string;
@@ -45,34 +47,38 @@ const HeroCdco: React.FC<HeroCdcoProps> = ({
                 />
               </div>
             </div>
-            
+
             {/* Left side - Content */}
             <div className="order-2 lg:order-1 text-center lg:text-left">
-              <p className="text-primary font-semibold text-lg md:text-2xl mb-1 -mt-3 md:mt-0">
-                {badge}
-              </p>
-              
-              <h1 className="text-xl md:text-3xl font-semibold text-foreground mb-2 md:leading-10">
-                {title}
-              </h1>
-              
-              <p className="text-lg font-medium md:text-2xl text-primary mb-3 leading-relaxed">
-                 {subtitle}
-              </p>
-              
+              <div className='flex flex-col items-center gap-2'>
+                <div className='flex flex-wrap gap-2 w-full justify-center md:justify-start'>
+                  <Badge className="text-lg" variant="secondary-foreground">
+                    {badge}
+                  </Badge>
+
+                  <div className='flex flex-wrap gap-4 justify-center'>
+                    <div className='text-secondary text-md flex gap-1 items-center'><Timer size="1.2em"/> Limited time <TimerCountUp/> </div>
+                  </div>
+                </div>
+
+                <h1 className="text-xl md:text-3xl font-semibold text-foreground mb-2 md:leading-10">
+                  {title}
+                </h1>
+              </div>
+
               <div className="space-y-2 mb-4">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-center justify-start">
-                    <div className="flex-shrink-0 w-4 h-4 bg-primary rounded-full flex items-center justify-center mr-4">
+                    <div className="shrink-0 w-4 h-4 bg-primary rounded-full flex items-center justify-center mr-4">
                       <Play className="w-2 h-2 text-primary-foreground fill-current" />
                     </div>
                     <span className="text-md md:text-2xl font-medium text-foreground text-left">{feature}</span>
                   </div>
                 ))}
               </div>
-              
+
               {/* CTA Section */}
-              <div className="text-center lg:text-left space-y-6">
+              <div className="flex flex-col items-center text-center lg:text-left gap-4">
                 <Button
                   asChild
                   size="lg"
@@ -86,6 +92,14 @@ const HeroCdco: React.FC<HeroCdcoProps> = ({
                 >
                   <p>{buttonText}</p>
                 </Button>
+                <div className="flex items-center flex-wrap justify-center gap-x-2 text-md font-medium md:text-lg text-primary mb-3 leading-relaxed">
+                  <p>
+                   {subtitle}
+                  </p>
+                  <div className='text-destructive animate-pulse text-md flex gap-2 items-center'>
+                    <ChartSpline size="1.2em"/> Low Stock Alert
+                  </div>
+                </div>
               </div>
             </div>
           </div>

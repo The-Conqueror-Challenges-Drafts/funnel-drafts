@@ -4,6 +4,10 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Raul mock code
+cdco_code.html
+pnpm-lock.yaml
+
 # Next.js
 .next/
 out/

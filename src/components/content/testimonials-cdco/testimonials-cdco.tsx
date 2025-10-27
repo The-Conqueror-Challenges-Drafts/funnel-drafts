@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Star, Lock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface Testimonial {
   quote: string;
@@ -66,12 +67,12 @@ const TestimonialsCdco: React.FC<TestimonialsCdcoProps> = ({
                           ))}
                         </div>
                       </div>
-                    </figcaption>    
+                    </figcaption>
                   </figure>
                 ))}
               </div>
             </div>
-            
+
             {/* Right Column: Form Container */}
             <div className="w-full order-1 lg:order-2 min-w-0">
               <div className="w-full lg:sticky lg:top-8">
@@ -87,7 +88,7 @@ const TestimonialsCdco: React.FC<TestimonialsCdcoProps> = ({
                         size="lg"
                         className="w-full font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
                       >
-                        <a 
+                        <a
                           href={buttonUrl}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -96,7 +97,7 @@ const TestimonialsCdco: React.FC<TestimonialsCdcoProps> = ({
                         </a>
                       </Button>
                     </div>
-                    
+
                     {/* Trust Indicators */}
                     <div className="pt-6 mt-8 border-t border-border">
                       <div className="flex justify-center mt-2 items-center opacity-60 gap-4 sm:gap-6 lg:gap-8 text-sm text-muted-foreground">

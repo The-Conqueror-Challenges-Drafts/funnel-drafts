@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { CheckCircle, Award, Smartphone, Calendar, MapPin } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
 
 interface ReasonsCdcoProps {
   title: string;
@@ -21,7 +22,7 @@ const ReasonsCdco: React.FC<ReasonsCdcoProps> = ({
       {/* Reason 1 Section */}
       <section className="bg-background">
         <div className="px-4 mx-auto max-w-screen-xl py-4 md:py-8 md:px-6">
-          <div className="max-w-screen-sm mb-8 lg:mb-10">
+          <div className="max-w-screen-sm mb-8 lg:mb-10 flex flex-col gap-2">
             <h2 className="mb-4 text-lg sm:text-2xl tracking-tight font-semibold text-black">
               {title}
             </h2>

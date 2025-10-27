@@ -1,24 +1,70 @@
 {
-  "page-title": "O1 Landing Page",
-  "topbar": {
-    "topbar-cta-text": "Get 50% off your first month - Limited time offer!",
-    "topbar-cta-link": "/offer",
-    "topbar-timer-duration": 300,
-    "topbar-timer-format": "mm:ss"
+  "meta": {
+    "title": "Motherhood changes everything. That's why we're making it easier to get your strength back.",
+    "description": "Safe, effective online workouts - Movement made for motherhood"
   },
-  "navbar": {
-    "navbar-logo": "LP OPS1",
-    "navbar-logo-link": "/"
+  "header": {
+    "logo": "/assets/shared/logo-tc.svg",
+    "alt": "She Moves"
   },
-  "default": {
-    "default-title": "O1 Landing Page",
-    "default-description": "Welcome to O1 Landing Page, buy the setup for",
-    "default-price": 99
+  "hero": {
+    "badge": "Limited Time Offer...",
+    "title": "Motherhood changes everything. That's why we're making it easier to get your strength back.",
+    "description": "Get back to feeling strong, confident, and like yourself again with our safe, effective online workouts designed specifically for mums.",
+    "image": "/assets/o2/hero-image-babyinhand.webp",
+    "imageAlt": "Mother holding baby - SheMovesTheme fitness for mums"
+  },
+  "trusted": {
+    "trustLogos": [
+      "/assets/shared/trust1.webp",
+      "/assets/shared/trust2.webp",
+      "/assets/shared/trust3.webp",
+      "/assets/shared/trust4.webp"
+    ],
+    "trustTitle": "Trusted by"
+  },
+  "reasons": {
+    "title": "Real fitness for real motherhood. Not another cookie-cutter plan, we built the program we wish we had.",
+    "subtitle": "Because we were tired of the polished, unachievable, and \"quite fake\" fitness industry that consistently fails mothers."
+  },
+  "features": {
+    "title": "Your body changed. Your workouts should too.",
+    "description": "We're Ren & Jen mums to six kids and pre/postpartum trainers who've seen it all: the pelvic floor challenges, the prolapse scares, the 3am \"is this normal?\" messages.\n\nWe also saw a fitness industry pushing \"bounce-back\" plans that felt fake and ignored the incredible thing our bodies had just been through. We built She Moves to be different. A realistic, physio-approved path that honours your journey and helps you heal, strengthen, and feel powerful in your body again.",
+    "image": "/assets/o2/reason3-image-renandjen.jpg",
+    "imageAlt": "Ren and Jen, co-founders of She Moves"
+  },
+  "testimonials": {
+    "title": "What Other Mums Say",
+    "testimonials": [
+      {
+        "quote": "After being diagnosed with a prolapse, I felt lost and unsure how to exercise safely. She Moves gave me the plan and structure I had been missing for so long - I could just push play, follow along, and rebuild my confidence.",
+        "author": "Lezana",
+        "image": "/assets/o2/testimonial1.png",
+        "rating": 5
+      },
+      {
+        "quote": "Today I ran my first ever 5.5km run, nearly 2 years postpartum after a harrowing pregnancy and very traumatic birth. I can honestly say its been the She Moves programme that has helped me achieve this and I'm so thankful.",
+        "author": "Sharon",
+        "image": "/assets/o2/testimonial2.png",
+        "rating": 5
+      },
+      {
+        "quote": "She Moves has been a game changer for me. The workouts are safe, effective, and I can do them at home. I finally feel like myself again.",
+        "author": "Sarah",
+        "image": "/assets/o2/testimonial3.png",
+        "rating": 5
+      }
+    ]
+  },
+  "cta": {
+    "title": "Don't give up on your strength and confidence because now you will have the support to reach it",
+    "buttonText": "Sign Up Now",
+    "buttonUrl": "https://joinshemoves.com/join"
   },
   "footer": {
-    "footer-logo": "LP OPS1",
-    "footer-logo-link": "/",
-    "footer-description": "Better Funnels with the LP OPS Setup for all brands.",
-    "footer-copyright": "© 2025 LP OPS. All rights reserved."
+    "logo": "/assets/shared/horizontal-shemoves-inversed.svg",
+    "alt": "She Moves",
+    "tagline": "Safe, effective online workouts - Movement made for motherhood",
+    "copyright": "© 2024 - She Moves. All Rights Reserved."
   }
 }

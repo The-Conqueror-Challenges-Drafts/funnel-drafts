@@ -1,0 +1,25 @@
+{
+  "title": "Your Invitation",
+  "description": [
+    "Mumma, if you've ever felt like your body isn't healing right",
+    "**You're not broken.**",
+    "You just need the right support.",
+    "**That's why we're inviting you to try She Moves.**"
+  ],
+  "offer": {
+    "price": "$1",
+    "priceValue": 1,
+    "originalPrice": "($19)",
+    "originalPriceValue": 19,
+    "duration": "First month",
+    "disclaimer": "Cancel anytime | Secure checkout",
+    "features": [
+      "Instant access to 200+ safe workouts",
+      "Step-by-step programs for recovery & strength",
+      "Coaching + community to cheer you on",
+      "Cancel anytime, no pressure"
+    ],
+    "buttonText": "Start Your Trial Now"
+  },
+  "socialProof": "Join 3,000+ active mums who've transformed their bodies and confidence"
+}

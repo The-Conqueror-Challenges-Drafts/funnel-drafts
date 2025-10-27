@@ -1,20 +1,36 @@
 {
   "components": {
-    "topbar": {
+    "header": {
       "show": true,
       "order": 1
     },
-    "navbar": {
+    "hero": {
       "show": true,
       "order": 2
     },
-    "default": {
+    "trusted": {
       "show": true,
       "order": 3
     },
-    "footer": {
+    "reasons": {
       "show": true,
       "order": 4
+    },
+    "testimonials": {
+      "show": true,
+      "order": 6
+    },
+    "features": {
+      "show": true,
+      "order": 7
+    },
+    "cta": {
+      "show": true,
+      "order": 8
+    },
+    "footer": {
+      "show": true,
+      "order": 9
     }
   }
 }

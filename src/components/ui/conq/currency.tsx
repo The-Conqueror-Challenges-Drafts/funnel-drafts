@@ -11,8 +11,12 @@ interface CurrencyInfo {
   name: string;
 }
 
-interface IpApiResponse {
-  country_code: string;
+interface IpRegistryResponse {
+  location: {
+    country: {
+      code: string;
+    };
+  };
   [key: string]: unknown;
 }
 
@@ -26,9 +30,14 @@ const CURRENCIES: Record<CurrencyCode, CurrencyInfo> = {
   NZD: { code: 'NZD', symbol: 'NZ$', name: 'New Zealand Dollar' },
 };
 
-// Country mapping
+// Country mapping - only specific countries that DON'T use EUR
 const COUNTRY_TO_CURRENCY: Record<string, CurrencyCode> = {
-  'US': 'USD', 'GB': 'GBP', 'CA': 'CAD', 'AU': 'AUD', 'NZ': 'NZD'
+  'US': 'USD',    // United States
+  'GB': 'GBP',    // Great Britain  
+  'CA': 'CAD',    // Canada
+  'AU': 'AUD',    // Australia
+  'NZ': 'NZD'     // New Zealand
+  // All other countries will default to EUR
 };
 
 // Context
@@ -97,12 +106,12 @@ export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     const detectCurrency = async () => {
       try {
-        // Use fastest API with aggressive timeout
+        // Use API with reasonable timeout
         const timeoutPromise = new Promise((_, reject) => 
-          setTimeout(() => reject(new Error('Timeout')), 500) // 500ms timeout
+          setTimeout(() => reject(new Error('Timeout')), 2000) // 2 second timeout
         );
 
-        const detectionPromise = fetch('https://ipapi.co/json/', {
+        const detectionPromise = fetch('https://api.ipregistry.co/?key=ira_78SZQvRyF7CC4TPc5xZAsJ4NKO1Lfn1VEG2E', {
           method: 'GET',
           headers: { 'Accept': 'application/json' },
           mode: 'cors'
@@ -111,17 +120,68 @@ export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }
           return response.json();
         });
 
-        const data = await Promise.race([detectionPromise, timeoutPromise]) as IpApiResponse;
-        const countryCode = data.country_code;
+        const data = await Promise.race([detectionPromise, timeoutPromise]) as IpRegistryResponse;
+        const countryCode = data.location?.country?.code;
+        
+        console.log('API Response - Country Code:', countryCode);
+        console.log('Available currencies for this country:', COUNTRY_TO_CURRENCY[countryCode]);
         
         if (countryCode) {
           const detectedCurrency = COUNTRY_TO_CURRENCY[countryCode] || 'EUR';
+          console.log('Currency detected from API:', countryCode, '->', detectedCurrency);
           setCurrency(detectedCurrency);
           // Cache for instant future loads
           localStorage.setItem('detected-currency', detectedCurrency);
+        } else {
+          // Fallback: try to detect from timezone if API fails
+          try {
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            let fallbackCurrency: CurrencyCode = 'EUR';
+            
+            console.log('API failed - using timezone fallback. Timezone:', timezone);
+            
+            if (timezone === 'Pacific/Auckland') {
+              fallbackCurrency = 'NZD';
+            } else if (timezone.startsWith('Australia/')) {
+              fallbackCurrency = 'AUD';
+            } else if (timezone.startsWith('America/')) {
+              fallbackCurrency = 'USD';
+            } else if (timezone.startsWith('Europe/')) {
+              fallbackCurrency = 'EUR';
+            }
+            
+            console.log('Currency detected from timezone fallback:', timezone, '->', fallbackCurrency);
+            setCurrency(fallbackCurrency);
+            localStorage.setItem('detected-currency', fallbackCurrency);
+          } catch {
+            // Keep default EUR
+          }
         }
-      } catch {
-        // Silently fail and use default currency
+      } catch (error) {
+        console.log('Currency detection API failed:', error);
+        // API failed, try timezone-based fallback
+        try {
+          const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+          let fallbackCurrency: CurrencyCode = 'EUR';
+          
+          console.log('API completely failed - using timezone fallback. Timezone:', timezone);
+          
+          if (timezone === 'Pacific/Auckland') {
+            fallbackCurrency = 'NZD';
+          } else if (timezone.startsWith('Australia/')) {
+            fallbackCurrency = 'AUD';
+          } else if (timezone.startsWith('America/')) {
+            fallbackCurrency = 'USD';
+          } else if (timezone.startsWith('Europe/')) {
+            fallbackCurrency = 'EUR';
+          }
+          
+          console.log('Currency detected from timezone fallback (API failed):', timezone, '->', fallbackCurrency);
+          setCurrency(fallbackCurrency);
+          localStorage.setItem('detected-currency', fallbackCurrency);
+        } catch {
+          // Keep default EUR
+        }
       } finally {
         setIsLoading(false);
       }
@@ -141,8 +201,9 @@ export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }
 export const CurrencyDisplay: React.FC<{ 
   amount: number; 
   className?: string; 
-  fallback?: string; 
-}> = ({ amount, className, fallback = '€0' }) => {
+  fallback?: string;
+  showLoading?: boolean;
+}> = ({ amount, className, fallback = '€0', showLoading = true }) => {
   const { formatPrice, isLoading } = useCurrency();
   const [mounted, setMounted] = useState(false);
 
@@ -152,7 +213,7 @@ export const CurrencyDisplay: React.FC<{
   }, []);
 
   // Always show fallback during SSR and initial client render
-  if (!mounted || isLoading) {
+  if (!mounted || (isLoading && showLoading)) {
     return <span className={className}>{fallback}</span>;
   }
 

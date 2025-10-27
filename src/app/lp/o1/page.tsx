@@ -2,12 +2,17 @@ import React from 'react';
 import { getPageData } from './utm';
 import defaultContent from './content/c1.json';
 import defaultLayout from './layout/l1.json';
+import { CurrencyProvider } from '@/components/ui/conq/currency';
 
 // Import your components here - just add/remove as needed
-import Topbar from '@/components/layout/topbar/topbar';
-import Navbar from '@/components/layout/navbar/navbar';
-import Default from '@/components/content/default/default';
-import Footer from '@/components/layout/footer/footer';
+import HeaderCdco from '@/components/content/header-cdco/header-cdco';
+import HeroCdco from '@/components/content/hero-cdco/hero-cdco';
+import TrustedCdco from '@/components/content/trusted-cdco/trusted-cdco';
+import ReasonsCdco from '@/components/content/reasons-cdco/reasons-cdco';
+import FeaturesCdco from '@/components/content/features-cdco/features-cdco';
+import TestimonialsCdco from '@/components/content/testimonials-cdco/testimonials-cdco';
+import CtaCdco from '@/components/content/cta-cdco/cta-cdco';
+import FooterCdco from '@/components/content/footer-cdco/footer-cdco';
 
 interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -17,10 +22,14 @@ export default async function Page({ searchParams }: PageProps) {
 
   // Component mapping - just add your components here
   const componentMap = {
-    Topbar,
-    Navbar,
-    Default,
-    Footer,
+    HeaderCdco,
+    HeroCdco,
+    TrustedCdco,
+    ReasonsCdco,
+    FeaturesCdco,
+    TestimonialsCdco,
+    CtaCdco,
+    FooterCdco,
   };
 
   // Get page data from utm
@@ -36,24 +45,18 @@ export default async function Page({ searchParams }: PageProps) {
     .sort(([, a], [, b]) => (a as { order: number }).order - (b as { order: number }).order);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {visibleComponents.map(([name]) => {
-        const componentName = name.charAt(0).toUpperCase() + name.slice(1);
-        const Component = componentMap[componentName as keyof typeof componentMap];
-        if (!Component) return null;
-        
-        const props = content[name] || {};
-        
-        if (name === 'default') {
-          return (
-            <main key={name} className="flex-1 flex items-center justify-center">
-              <Component {...props} />
-            </main>
-          );
-        }
-        
-        return <Component key={name} {...props} />;
-      })}
-    </div>
+    <CurrencyProvider>
+      <div className="min-h-screen">
+        {visibleComponents.map(([name]) => {
+          const componentName = name.charAt(0).toUpperCase() + name.slice(1) + 'Cdco';
+          const Component = componentMap[componentName as keyof typeof componentMap];
+          if (!Component) return null;
+          
+          const props = content[name] || {};
+          
+          return <Component key={name} {...props} />;
+        })}
+      </div>
+    </CurrencyProvider>
   );
 }

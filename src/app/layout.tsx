@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
-import { Sora } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/google-tag-manager";
 
 const GTM_ID = "YOUR-GTM";
 
-const sora = Sora({
-  variable: "--font-sora",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -38,7 +38,7 @@ export default function RootLayout({
       <head>
         <GoogleTagManager gtmId={GTM_ID} />
       </head>
-      <body className={`${sora.variable} antialiased`}>
+      <body className={`${inter.variable} antialiased`}>
         <GoogleTagManagerNoScript gtmId={GTM_ID} />
         {children}
       </body>

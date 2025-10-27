@@ -1,0 +1,23 @@
+{
+  "title": "What Our Mums Say",
+  "testimonials": [
+    {
+      "quote": "I finally feel like myself again! The workouts are perfect for my energy levels and I love the community support.",
+      "author": "Sarah M.",
+      "image": "/assets/o3/testimonial-1.webp",
+      "rating": 5
+    },
+    {
+      "quote": "After my c-section, I was scared to exercise. This program gave me confidence and helped me heal properly.",
+      "author": "Emma L.",
+      "image": "/assets/o3/testimonial-2.webp",
+      "rating": 5
+    },
+    {
+      "quote": "The 5-minute workouts are a lifesaver! I can actually fit them in between feeds and naps.",
+      "author": "Jessica K.",
+      "image": "/assets/o3/testimonial-3.webp",
+      "rating": 5
+    }
+  ]
+}

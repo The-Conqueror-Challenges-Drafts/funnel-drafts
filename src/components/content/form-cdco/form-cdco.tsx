@@ -159,11 +159,11 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                   <AvatarFallback>ER</AvatarFallback>
                 </Avatar>
                 <Avatar>
-                  <AvatarFallback className="font-semibold text-xs text-primary">12k+</AvatarFallback>
+                  <AvatarFallback className="font-semibold text-xs text-primary">4k+</AvatarFallback>
                 </Avatar>
               </div>
               <p className='text-primary text-sm md:text-lg font-medium'>
-                Most Popular Challenge
+                Already Joined This Challenge
               </p>
             </div>
             <h2 className="mb-4 text-lg sm:text-2xl tracking-tight font-semibold text-black text-left">
@@ -253,7 +253,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                         </a>
                       </Button>
                       <div className='text-primary text-md'>
-                        <span className='font-semibold animate-pulse inline-flex items-center gap-1'>{isLoadingUserCount ? <Spinner/> : currentViewers} people</span> are viewing this offer
+                        <span className='font-semibold animate-pulse inline-flex items-center gap-1'>{isLoadingUserCount ? <Spinner/> : currentViewers} People</span> are Viewing this Challenge
                       </div>
                     </div>
 
@@ -276,16 +276,16 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                 </div>
 
                 <div className='flex gap-2 mt-6 flex-wrap items-center justify-center w-full'>
-                  <Badge variant="ghost">
-                    <SiAppstore className={`text-[#0D96F6]! size-4!`}/>
+                  <Badge variant="ghost" className='text-lg'>
+                    <SiAppstore className={`text-[#0D96F6]! size-6!`}/>
                     4.8
                   </Badge>
-                  <Badge variant="ghost">
-                    <SiGoogleplay className={`text-[#FBBC04]! size-4!`}/>
+                  <Badge variant="ghost" className='text-lg'>
+                    <SiGoogleplay className={`text-[#FBBC04]! size-6!`}/>
                     4.7
                   </Badge>
-                  <Badge variant="ghost">
-                    <SiTrustpilot className={`text-[${SiTrustpilotHex}] size-4!`}/>
+                  <Badge variant="ghost" className='text-lg'>
+                    <SiTrustpilot className={`text-[${SiTrustpilotHex}] size-6!`}/>
                     4.9
                   </Badge>
                 </div>

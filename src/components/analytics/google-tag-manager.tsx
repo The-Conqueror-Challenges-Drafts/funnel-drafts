@@ -136,10 +136,10 @@ export const gtm = {
     if (typeof window !== 'undefined' && window.dataLayer && Array.isArray(window.dataLayer)) {
       try {
         // Bypass TikTok's hijacked push function by using native Array.prototype.push
-        Array.prototype.push.call(window.dataLayer, {
+        window.dataLayer.push({
           event: 'Email Lead Submit',
           emailLeadType: 'cDCO Email Lead',
-          emailLeadDetails: emailLeadDetails,
+          emailLeadDetails: JSON.stringify(emailLeadDetails),
           challengeName: challengeName,
           challengeImageUrl: challengeImageUrl,
         })

@@ -112,6 +112,33 @@ export const gtm = {
       })
     }
   },
+
+  // Email Lead Details should have this format
+  /*
+
+  {
+    'leadEmail': email,
+    'leadFirstName': firstName,
+    'leadLastName': lastName
+  }
+  */
+
+  emailLeadSubmit: (emailLeadDetails: {
+    leadEmail: string;
+    leadFirstName: string;
+    leadLastName: string;
+  }, challengeName: string, challengeImageUrl: string) => {
+   
+    if (typeof window !== 'undefined' && window.dataLayer) {
+      window.dataLayer.push({
+        'event': 'Email Lead Submit',
+        'emailLeadType': 'cDCO Email Lead',
+        'emailLeadDetails': JSON.stringify(emailLeadDetails),
+        'challengeName': challengeName,
+        'challengeImageUrl': challengeImageUrl,
+      })
+    }
+  }
 }
 
 // Extend the Window interface to include dataLayer

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { initiateCheckout } from '@/hooks/useCheckout';
 
 interface CtaCdcoProps {
   badge: string;
@@ -32,11 +33,12 @@ const CtaCdco: React.FC<CtaCdcoProps> = ({
             <Button
               asChild
               size="lg"
-              className="w-full font-bold px-8 py-6 text-xl md:mb-0 rounded-lg transition-all duration-300"
+              className="mb-4 rounded-lg py-6 inline-flex items-center justify-center border-2 text-lg md:text-xl border-primary text-primary font-semibold px-8 transition-all duration-300"
+              onClick={() => initiateCheckout("John", "Doe", "john.doe@example.com")}
             >
-              <a href={buttonUrl} target="_blank" rel="noopener noreferrer">
+              <p>
                 {buttonText}
-              </a>
+              </p>
             </Button>
           </div>
         </div>

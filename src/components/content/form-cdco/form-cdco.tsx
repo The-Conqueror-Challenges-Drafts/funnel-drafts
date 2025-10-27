@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Star, Lock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { initiateCheckout } from '@/hooks/useCheckout';
+import { Spinner } from '@/components/ui/spinner';
 
 interface Testimonial {
   quote: string;
@@ -247,7 +248,13 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                         size="lg"
                         className="w-full cursor-pointer font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
                       >
-                          <p>{buttonText}</p>
+                          {loading ? 
+                            <div className="w-full flex justify-center items-center gap-2">
+                              <p>Reserving your spot...</p>
+                              <Spinner className='w-5 h-5'/>\
+                            </div> 
+                          : 
+                          <p>{buttonText}</p>}
                       </Button>
                     </div>
                     

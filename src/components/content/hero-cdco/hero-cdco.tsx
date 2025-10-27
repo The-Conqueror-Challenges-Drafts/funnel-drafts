@@ -76,15 +76,15 @@ const HeroCdco: React.FC<HeroCdcoProps> = ({
                 <Button
                   asChild
                   size="lg"
-                  className="w-full font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
+                  className="w-full cursor-pointer font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
+                  onClick={() => {
+                    const formSection = document.getElementById('get-started');
+                    if (formSection) {
+                      formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                  }}
                 >
-                  <a 
-                    href={buttonUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {buttonText}
-                  </a>
+                  <p>{buttonText}</p>
                 </Button>
               </div>
             </div>

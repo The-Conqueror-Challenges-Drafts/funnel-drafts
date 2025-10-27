@@ -137,6 +137,26 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
       });
     }
   }, [errors]);
+
+  const [loading, setLoading] = useState(false);
+  const handleSubmit = () => { 
+    setLoading(true);
+    const result = initiateCheckout(formData.firstName, formData.lastName, formData.email);
+    if (!result?.success && result?.fields) {
+        const newErrors: Record<string, string> = {};
+        if (result.fields.firstName.error) newErrors.firstName = result.fields.firstName.error;
+        if (result.fields.lastName.error) newErrors.lastName = result.fields.lastName.error;
+        if (result.fields.email.error) newErrors.email = result.fields.email.error;
+        setErrors(newErrors);
+        setLoading(false);
+    } else {
+      setTimeout(() => {
+        setLoading(false);
+        window.location.href = 'https://store.theconqueror.events/store/single/single?item=1611';
+      }, 2000);
+    }
+  }
+  
   return (
     <>
       {/* Reason 2 Section - Testimonials & Form */}
@@ -221,14 +241,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                     <div className="text-center space-y-6 md:mb-4">
                       <Button
                         onClick={() => {
-                          const result = initiateCheckout("Razvan", "Tudor", "razvan.tudor@gmail.com");
-                          // if (!result?.success && result?.fields) {
-                          //   const newErrors: Record<string, string> = {};
-                          //   if (result.fields.firstName.error) newErrors.firstName = result.fields.firstName.error;
-                          //   if (result.fields.lastName.error) newErrors.lastName = result.fields.lastName.error;
-                          //   if (result.fields.email.error) newErrors.email = result.fields.email.error;
-                          //   setErrors(newErrors);
-                          // }
+                          handleSubmit();
                         }}
                         asChild
                         size="lg"

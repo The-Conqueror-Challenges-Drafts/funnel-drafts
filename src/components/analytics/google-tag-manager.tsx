@@ -58,12 +58,12 @@ interface GTMEcommerceItem {
   price?: number
 }
 
-type GTMDataLayerItem = Record<string, string | number | boolean | undefined | GTMEcommerceItem[] | object | Array<any>>
+type GTMDataLayerItem = Record<string, string | number | boolean | undefined | GTMEcommerceItem[]>
 
 // Utility functions for Google Tag Manager
 export const gtm = {
   // Push events to dataLayer
-  push: (data: any) => {
+  push: (data: GTMDataLayerItem) => {
     if (typeof window !== 'undefined' && window.dataLayer && Array.isArray(window.dataLayer)) {
       try {
         // Bypass TikTok's hijacked push function by using native Array.prototype.push

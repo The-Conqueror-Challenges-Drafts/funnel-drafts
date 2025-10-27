@@ -152,8 +152,8 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
         setLoading(false);
     } else {
       setTimeout(() => {
-        setLoading(false);
         window.location.href = 'https://store.theconqueror.events/store/single/single?item=1611';
+        // setLoading(false);
       }, 2000);
     }
   }
@@ -251,7 +251,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                           {loading ? 
                             <div className="w-full flex justify-center items-center gap-2">
                               <p>Reserving your spot...</p>
-                              <Spinner className='w-5 h-5'/>\
+                              <Spinner className='w-5 h-5'/>
                             </div> 
                           : 
                           <p>{buttonText}</p>}

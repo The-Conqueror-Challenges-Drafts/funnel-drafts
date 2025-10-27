@@ -1,0 +1,23 @@
+{
+  "title": "What Our Mums Say",
+  "testimonials": [
+    {
+      "quote": "I love the unique challenges, the distances, and the medals. All of that gives me the boost that I needed to stay active! Thanks Conqueror!",
+      "author": "Sa Aladdin",
+      "image": "/assets/o3/testimonial-1.webp",
+      "rating": 5
+    },
+    {
+      "quote": "A great way to get up and exercise and learn some interesting history while you're at it. The finisher medals are high quality, and some are real works of art. Overall, the most bang for your buck when it comes to virtual challenges.",
+      "author": "Aletz R.",
+      "image": "/assets/o3/testimonial-2.webp",
+      "rating": 5
+    },
+    {
+      "quote": "I am so glad I came across this community. It is by far a fun way to get active by either walking, running, swimming or whatever gets you moving. Knowing that there is a medal at the end of your journey is just icing on the cake.",
+      "author": "Nadine Borey",
+      "image": "/assets/o3/testimonial-3.webp",
+      "rating": 5
+    }
+  ]
+}

@@ -12,12 +12,25 @@ interface Testimonial {
   rating: number;
 }
 
+interface TrustIndicator {
+  icon: string;
+  text: string;
+}
+
 interface TestimonialsCdcoProps {
   title: string;
+  ctaTitle: string;
+  buttonText: string;
+  buttonUrl: string;
+  trustIndicators: TrustIndicator[];
   testimonials: Testimonial[];
 }
 
 const TestimonialsCdco: React.FC<TestimonialsCdcoProps> = ({
+  ctaTitle,
+  buttonText,
+  buttonUrl,
+  trustIndicators,
   testimonials
 }) => {
   return (
@@ -67,20 +80,19 @@ const TestimonialsCdco: React.FC<TestimonialsCdcoProps> = ({
                     {/* CTA Section */}
                     <div className="text-center space-y-6">
                       <h3 className="text-2xl md:text-3xl font-semibold text-primary">
-                        Ready to feel strong and confident again?
-                        Start your journey TODAY for just $1!
+                        {ctaTitle}
                       </h3>
                       <Button
                         asChild
                         size="lg"
-                        className="w-full font-bold px-8 py-6 text-lg rounded-lg transition-all duration-300"
+                        className="w-full font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
                       >
                         <a 
-                          href="https://joinshemoves.com/join"
+                          href={buttonUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Sign Up Now
+                          {buttonText}
                         </a>
                       </Button>
                     </div>
@@ -88,18 +100,16 @@ const TestimonialsCdco: React.FC<TestimonialsCdcoProps> = ({
                     {/* Trust Indicators */}
                     <div className="pt-6 mt-8 border-t border-border">
                       <div className="flex justify-center mt-2 items-center opacity-60 gap-4 sm:gap-6 lg:gap-8 text-sm text-muted-foreground">
-                        <div className="flex flex-col items-center space-y-2 min-w-0 flex-1 max-w-[120px] group cursor-default transition-all duration-300 hover:opacity-100">
-                          <Lock className="w-6 h-6 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
-                          <span className="text-center text-xs sm:text-sm leading-tight transition-colors duration-300 group-hover:text-foreground">Secure Checkout</span>
-                        </div>
-                        <div className="flex flex-col items-center space-y-2 min-w-0 flex-1 max-w-[120px] group cursor-default transition-all duration-300 hover:opacity-100">
-                          <Shield className="w-6 h-6 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
-                          <span className="text-center text-xs sm:text-sm leading-tight transition-colors duration-300 group-hover:text-foreground">Cancel Anytime</span>
-                        </div>
-                        <div className="flex flex-col items-center space-y-2 min-w-0 flex-1 max-w-[120px] group cursor-default transition-all duration-300 hover:opacity-100">
-                          <Users className="w-6 h-6 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
-                          <span className="text-center text-xs sm:text-sm leading-tight transition-colors duration-300 group-hover:text-foreground">Trusted by 5000+ mums</span>
-                        </div>
+                        {trustIndicators.map((indicator, index) => {
+                          const icons = { Lock, Shield, Users };
+                          const IconComponent = icons[indicator.icon as keyof typeof icons] || Lock;
+                          return (
+                            <div key={index} className="flex flex-col items-center space-y-2 min-w-0 flex-1 max-w-[120px] group cursor-default transition-all duration-300 hover:opacity-100">
+                              <IconComponent className="w-6 h-6 text-muted-foreground transition-all duration-300 group-hover:text-primary group-hover:scale-110" />
+                              <span className="text-center text-xs sm:text-sm leading-tight transition-colors duration-300 group-hover:text-foreground">{indicator.text}</span>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>

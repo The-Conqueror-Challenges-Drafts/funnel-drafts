@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/analytics/google-tag-manager";
+import { CookieMonitor } from "@/components/analytics/cookie-monitor";
+import { ConvertExperiments } from "@/components/analytics/convert-experiments";
 
-const GTM_ID = "YOUR-GTM";
+const GTM_ID = "GTM-PJ3P2VN";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -12,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "LP OPS",
+  title: "The Conqueror - Virtual Challenges and Medals I Virtual Challenges",
   robots: {
     index: false,
     follow: false,
@@ -36,6 +38,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <CookieMonitor />
+        <ConvertExperiments />
         <GoogleTagManager gtmId={GTM_ID} />
       </head>
       <body className={`${inter.variable} antialiased`}>

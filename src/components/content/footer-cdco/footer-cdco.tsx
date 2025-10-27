@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 
 interface FooterCdcoProps {
   logo: string;
@@ -16,10 +15,10 @@ const FooterCdco: React.FC<FooterCdcoProps> = ({
   return (
     <>
       {/* Footer */}
-      <footer className="px-4 md:px-12 py-4 bg-primary">
+      <footer className="px-4 md:px-12 py-2 bg-black">
         <div className="mx-auto max-w-2xl text-center">
 
-          <span className="text-md text-primary-foreground opacity-80">
+          <span className="text-md text-white opacity-80">
             {copyright}
           </span>
         </div>

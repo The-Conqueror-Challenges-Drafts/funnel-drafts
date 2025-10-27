@@ -8,63 +8,108 @@
     "alt": "She Moves"
   },
   "hero": {
-    "badge": "Limited Time Offer...",
-    "title": "Motherhood changes everything. That's why we're making it easier to get your strength back.",
+    "badge": "Get 20% OFF!",
+    "title": "Start This Challenge Because You Get An Awesome Medal and Get To Virtually Explore Salem Witch Trials",
     "description": "Get back to feeling strong, confident, and like yourself again with our safe, effective online workouts designed specifically for mums.",
-    "image": "/assets/o2/hero-image-babyinhand.webp",
+    "subtitle": "Fast Delivery To Bucuresti, Romania",
+    "features": [
+      "30 mi (48 km)",
+      "Pick your own timeframe",
+      "Any physical activity accepted"
+    ],
+    "buttonText": "Sign Up Now",
+    "buttonUrl": "https://joinshemoves.com/join",
+    "image": "/assets/o1/salem-medal.webp",
     "imageAlt": "Mother holding baby - SheMovesTheme fitness for mums"
   },
   "trusted": {
     "trustLogos": [
-      "/assets/shared/trust1.webp",
-      "/assets/shared/trust2.webp",
-      "/assets/shared/trust3.webp",
-      "/assets/shared/trust4.webp"
+      "/assets/shared/trust1.png",
+      "/assets/shared/trust2.png",
+      "/assets/shared/trust3.png",
+      "/assets/shared/trust4.png"
     ],
-    "trustTitle": "Trusted by"
+    "trustTitle": "FEATURED IN"
   },
   "reasons": {
-    "title": "Real fitness for real motherhood. Not another cookie-cutter plan, we built the program we wish we had.",
-    "subtitle": "Because we were tired of the polished, unachievable, and \"quite fake\" fitness industry that consistently fails mothers."
+    "title": "Reason #1: 87.93% of People Finish This Challenge Because Progress Is Real and Tangible",
+    "subtitle": "Because we were tired of the polished, unachievable, and \"quite fake\" fitness industry that consistently fails mothers.",
+    "features": [
+      {
+        "title": "Amazing Medal",
+        "description": "You get an amazing medal shipped to you upon completion."
+      },
+      {
+        "title": "Mobile App Tracking",
+        "description": "You get to track your progress on The Conqueror's mobile app."
+      },
+      {
+        "title": "Flexible Deadlines",
+        "description": "You get to choose your own deadline, making it achievable for everyone."
+      },
+      {
+        "title": "Virtual Map Progress",
+        "description": "You can see yourself on the virtual map, making your progress much more tangible."
+      }
+    ]
   },
-  "features": {
-    "title": "Your body changed. Your workouts should too.",
-    "description": "We're Ren & Jen mums to six kids and pre/postpartum trainers who've seen it all: the pelvic floor challenges, the prolapse scares, the 3am \"is this normal?\" messages.\n\nWe also saw a fitness industry pushing \"bounce-back\" plans that felt fake and ignored the incredible thing our bodies had just been through. We built She Moves to be different. A realistic, physio-approved path that honours your journey and helps you heal, strengthen, and feel powerful in your body again.",
-    "image": "/assets/o2/reason3-image-renandjen.jpg",
-    "imageAlt": "Ren and Jen, co-founders of She Moves"
-  },
-  "testimonials": {
-    "title": "What Other Mums Say",
+  "form": {
+    "ctaTitle": "Reason #2: Start Today Because Waiting Only Makes It Harder to Begin",
+    "buttonText": "NEXT STEP →",
+    "buttonUrl": "https://joinshemoves.com/join",
+    "trustIndicators": [
+      {
+        "icon": "Lock",
+        "text": "Secure Checkout"
+      },
+      {
+        "icon": "Shield", 
+        "text": "We Protect Your Privacy"
+      },
+      {
+        "icon": "Users",
+        "text": "100% Satisfaction"
+      }
+    ],
     "testimonials": [
       {
-        "quote": "After being diagnosed with a prolapse, I felt lost and unsure how to exercise safely. She Moves gave me the plan and structure I had been missing for so long - I could just push play, follow along, and rebuild my confidence.",
-        "author": "Lezana",
-        "image": "/assets/o2/testimonial1.png",
+        "quote": "This has been the most motivating thing I've ever seen for getting myself up off the couch and being active!",
+        "author": "Melissa Clark",
+        "image": "/assets/o1/testimonial-1.jpg",
         "rating": 5
       },
       {
-        "quote": "Today I ran my first ever 5.5km run, nearly 2 years postpartum after a harrowing pregnancy and very traumatic birth. I can honestly say its been the She Moves programme that has helped me achieve this and I'm so thankful.",
-        "author": "Sharon",
-        "image": "/assets/o2/testimonial2.png",
+        "quote": "I have never been very good at exercising – I like the idea more than the practice! But it wouldn't be overstating the case to say that the Conqueror Challenges have completely changed my whole outlook on things.",
+        "author": "Tony Peterson",
+        "image": "/assets/o1/testimonial-2.jpg",
         "rating": 5
       },
       {
-        "quote": "She Moves has been a game changer for me. The workouts are safe, effective, and I can do them at home. I finally feel like myself again.",
-        "author": "Sarah",
-        "image": "/assets/o2/testimonial3.png",
+        "quote": "I started my journey in Sept 2021 with the Ring of Kerry Ring Challenge. Every day I do my best to get myself out of my chair and it's so worth it. Every day I have found a new route to walk.",
+        "author": "Magdalena Nel",
+        "image": "/assets/o1/testimonial-3.jpg",
         "rating": 5
       }
     ]
   },
+  "features": {
+    "title": "Reason #3: It Doesn't Feel Like Exercise Because You're Exploring Salem Witch Trials as You Move",
+    "description": "Victims. Lies. Verdict.\nDiscover the truth behind the most infamous trial in American History!\n\nTake on the expedition through colonial villages, shadowed woods, and historic grounds. Unlock the full story piece by piece, and complete your journey with a medal that quietly honors the victims.\n\nStart now and earn your glow-in-the-dark tarot medal that hides your fortune.",
+    "image": "/assets/o1/salem-app.webp",
+    "imageAlt": "Salem Witch Trials virtual challenge app",
+    "featureList": [
+      "Explore colonial villages and historic grounds",
+      "Unlock the full story piece by piece",
+      "Earn your glow-in-the-dark tarot medal"
+    ]
+  },
   "cta": {
-    "title": "Don't give up on your strength and confidence because now you will have the support to reach it",
+    "badge": "FOR A LIMITED TIME, GET 20% OFF!",
+    "title": "Don't Give Up On your Fitness Goals Because Now You'll Actually Reach Them",
     "buttonText": "Sign Up Now",
     "buttonUrl": "https://joinshemoves.com/join"
   },
   "footer": {
-    "logo": "/assets/shared/horizontal-shemoves-inversed.svg",
-    "alt": "She Moves",
-    "tagline": "Safe, effective online workouts - Movement made for motherhood",
-    "copyright": "© 2024 - She Moves. All Rights Reserved."
+    "copyright": "® Actionary Limited - All Rights Reserved"
   }
 }

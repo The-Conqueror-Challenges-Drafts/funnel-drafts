@@ -3,11 +3,15 @@
 import React from 'react';
 import Image from 'next/image';
 import { Play } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface HeroCdcoProps {
   badge: string;
   title: string;
-  description: string;
+  subtitle: string;
+  features: string[];
+  buttonText: string;
+  buttonUrl: string;
   image: string;
   imageAlt: string;
 }
@@ -15,17 +19,21 @@ interface HeroCdcoProps {
 const HeroCdco: React.FC<HeroCdcoProps> = ({
   badge,
   title,
+  subtitle,
+  features,
+  buttonText,
+  buttonUrl,
   image,
   imageAlt
 }) => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-background md:py-12 flex -mt-10 items-center font-sans">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 pt-12">
-          <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
-            {/* Left side - Image */}
-            <div className="order-1 lg:order-1 flex justify-center lg:justify-start">
+      <section className="bg-background flex items-center font-sans">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 lg:gap-12 items-center">
+            {/* Right side - Image */}
+            <div className="order-1 lg:order-2 flex justify-center lg:justify-start">
               <div className="relative">
                 <Image
                   src={image}
@@ -33,53 +41,51 @@ const HeroCdco: React.FC<HeroCdcoProps> = ({
                   width={1200}
                   height={1600}
                   priority
-                  className="w-full max-w-md lg:max-w-lg xl:max-w-xl h-60 md:h-96 lg:h-[580px] object-cover rounded-lg"
+                  className="w-full mb-6 mt-2 max-w-md lg:max-w-lg xl:max-w-xl h-72 lg:h-[460px] object-contain rounded-lg"
                 />
               </div>
             </div>
             
-            {/* Right side - Content */}
-            <div className="order-2 lg:order-2 text-center lg:text-left">
-              <p className="text-primary font-semibold text-lg md:text-2xl -mt-1 mb-3 md:mb-4">
+            {/* Left side - Content */}
+            <div className="order-2 lg:order-1 text-center lg:text-left">
+              <p className="text-primary font-semibold text-lg md:text-2xl mb-1 -mt-3 md:mt-0">
                 {badge}
               </p>
               
-              <h1 className="text-xl md:text-3xl font-bold text-foreground/80 mb-4">
+              <h1 className="text-xl md:text-3xl font-semibold text-foreground mb-2 md:leading-10">
                 {title}
               </h1>
               
-              <p className="text-md font-semibold md:text-xl text-primary mb-4 leading-relaxed">
-                Start our complete, physio-approved program today for just $1 (usually <span className="line-through">$19</span>/month). Your membership includes:
+              <p className="text-lg font-medium md:text-2xl text-primary mb-3 leading-relaxed">
+                 {subtitle}
               </p>
               
-              <div className="space-y-4 mb-8">
-                <div className="flex items-center justify-start">
-                  <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 bg-primary rounded-full flex items-center justify-center mr-4">
-                    <Play className="w-3 h-3 md:w-3 md:h-3 text-primary-foreground fill-current" />
+              <div className="space-y-2 mb-4">
+                {features.map((feature, index) => (
+                  <div key={index} className="flex items-center justify-start">
+                    <div className="flex-shrink-0 w-4 h-4 bg-primary rounded-full flex items-center justify-center mr-4">
+                      <Play className="w-2 h-2 text-primary-foreground fill-current" />
+                    </div>
+                    <span className="text-md md:text-2xl font-medium text-foreground text-left">{feature}</span>
                   </div>
-                  <span className="text-md md:text-lg font-medium text-foreground/80 text-left">100+ physio-approved workouts (30mins to 10mins build for nap-time)</span>
-                </div>
-                
-                <div className="flex items-center justify-start">
-                  <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 bg-primary rounded-full flex items-center justify-center mr-4">
-                    <Play className="w-3 h-3 md:w-3 md:h-3 text-primary-foreground fill-current" />
-                  </div>
-                  <span className="text-md md:text-lg font-medium text-foreground/80 text-left">Support for prolapse, abdominal separation & post-cesarean</span>
-                </div>
-                
-                <div className="flex items-center justify-start">
-                  <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 bg-primary rounded-full flex items-center justify-center mr-4">
-                    <Play className="w-3 h-3 md:w-3 md:h-3 text-primary-foreground fill-current" />
-                  </div>
-                  <span className="text-md md:text-lg font-medium text-foreground/80 text-left">Rehab-focused core & pelvic floor sessions</span>
-                </div>
-                
-                <div className="flex items-center justify-start">
-                  <div className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6 bg-primary rounded-full flex items-center justify-center mr-4">
-                    <Play className="w-3 h-3 md:w-3 md:h-3 text-primary-foreground fill-current" />
-                  </div>
-                  <span className="text-md md:text-lg font-medium text-foreground/80 text-left">Access to our private community of 5,000+ mums</span>
-                </div>
+                ))}
+              </div>
+              
+              {/* CTA Section */}
+              <div className="text-center lg:text-left space-y-6">
+                <Button
+                  asChild
+                  size="lg"
+                  className="w-full font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
+                >
+                  <a 
+                    href={buttonUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {buttonText}
+                  </a>
+                </Button>
               </div>
             </div>
           </div>

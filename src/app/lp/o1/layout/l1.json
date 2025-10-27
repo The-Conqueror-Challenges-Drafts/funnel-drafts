@@ -16,21 +16,21 @@
       "show": true,
       "order": 4
     },
-    "testimonials": {
+    "form": {
       "show": true,
-      "order": 6
+      "order": 5
     },
     "features": {
       "show": true,
-      "order": 7
+      "order": 6
     },
     "cta": {
       "show": true,
-      "order": 8
+      "order": 7
     },
     "footer": {
       "show": true,
-      "order": 9
+      "order": 8
     }
   }
 }

@@ -10,7 +10,7 @@ import HeroCdco from '@/components/content/hero-cdco/hero-cdco';
 import TrustedCdco from '@/components/content/trusted-cdco/trusted-cdco';
 import ReasonsCdco from '@/components/content/reasons-cdco/reasons-cdco';
 import FeaturesCdco from '@/components/content/features-cdco/features-cdco';
-import TestimonialsCdco from '@/components/content/testimonials-cdco/testimonials-cdco';
+import FormCdco from '@/components/content/form-cdco/form-cdco';
 import CtaCdco from '@/components/content/cta-cdco/cta-cdco';
 import FooterCdco from '@/components/content/footer-cdco/footer-cdco';
 
@@ -27,7 +27,7 @@ export default async function Page({ searchParams }: PageProps) {
     TrustedCdco,
     ReasonsCdco,
     FeaturesCdco,
-    TestimonialsCdco,
+    FormCdco,
     CtaCdco,
     FooterCdco,
   };

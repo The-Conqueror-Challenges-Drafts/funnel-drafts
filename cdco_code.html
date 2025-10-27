@@ -1,0 +1,728 @@
+<?php
+require_once('reviews.php');
+require_once('benefits_card.php');
+
+function tc_raul_dco_section_offer_routing($fields, $extra_css_classes = "") {
+  global $challenge_id;
+?>
+
+<style>
+
+    #step1-checkout-classic {
+        display: block;
+    }
+
+    #step1-checkout-offer-route-form-container {
+        display: block;
+    }
+    
+    #step1-checkout-offer-route {
+        display: none;
+        min-height: auto;
+    }
+    
+    #routing-offer-container {
+        display: none;
+        padding: 16px;
+    }
+    
+    #routing-offer-buttons-container {
+        margin-top: 32px;
+    }
+    
+    #step1-checkout-offer-route .cta-button-color-fill {
+        margin-top: 16px;
+    }
+     
+    #routing-offer-headline {
+        text-align: center;
+        font-size: 32px;
+        line-height: 1.2;
+    }
+    
+    #routing-offer-subheadline {
+        margin-top: 8px;
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.3;
+    }
+
+    .cta-button-color-fill {
+        background-color: #00a7ae;
+        display: block;
+        width: 100%;
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        color: white;
+        line-height: 1.5;
+        border-radius: 4px;
+    }
+    
+    .cta-button-color-outline {
+        border: 2px solid #00a7ae;
+        color: #00a7ae;
+        display: block;
+        width: 100%;
+        padding: 8px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.5;
+        border-radius: 4px;
+    }
+
+  .form-flex-container {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 16px;
+  }
+  
+  .flex-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #8B8B8B;
+  }
+  .flex-title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .wfacp-coupon-section,
+  .place_order_back_btn,
+  .place_order_back_btn.wfacp_none_class,
+  .wfacp-payment-dec,
+  .wfacp-payment-title {
+    display: none;
+  }
+
+  .wfacp-inner-form-detail-wrap {
+    border-radius: 5px;
+  }
+
+  /* Might be interesting to actually show this section at some point */
+  .wfacp_collapsible_order_summary_wrap {
+    display: none;
+  }
+
+  body #wfacp-e-form .wfacp-form .wfacp_main_form:not(.wfacp_single_step_form) .wfacp-order-place-btn-wrap {
+    padding-bottom: 0;
+  }
+  
+  @media (max-width: 600px) {
+    .dco-headline {
+      font-size: 20px;
+      line-height: 1.35;
+    }
+  }
+  
+  #step1-checkout-container {
+      padding: 16px;
+      
+      margin-bottom: 16px;
+  }
+  
+  #step1-checkout-error-list {
+      margin-bottom: 8px;
+  }
+  
+  #step1-checkout-error-list li {
+      color: red;
+  }
+
+    #step1-checkout-error-list-classic {
+        margin-bottom: 8px;
+    }
+
+    #step1-checkout-error-list-classic li {
+        color: red;
+    }
+
+  #step1-checkout-wrapper {
+      display: grid;
+      
+      grid-template-columns: 1fr;
+      
+      column-gap: 8px;
+  }
+  
+  #step1-checkout-classic-email-input-wrapper {
+      grid-column: 1 / -1;
+  }
+  
+  #step1-checkout-nextstep-button {
+     background-color: #00a7ae;
+    display: block;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.5;
+    border-radius: 4px;
+  }
+  
+  #step1-checkout-nextstep-button:hover {
+      background-color: #228a8f !important;
+  }
+  
+  #step1-checkout-classic-firstName-input {
+      
+  }
+  
+  .step1-checkout-input {
+        padding: 13px 8px 0px !important;
+        border-radius: 4px;
+        border: 1px solid #bfbfbf !important;
+        margin-bottom: 16px !important;
+        line-height: 1.5;
+        font-weight: 400;
+        width: 100%;
+        
+        min-height: 60px;
+        
+        font-size: 16px;
+        
+        color: black;
+  }
+  
+  .step1-checkout-input-wrapper {
+      position: relative;
+  }
+  
+  .firststep_checkout_input_label_center {
+     
+    color: rgb(136, 136, 136);
+    
+    position: absolute;
+    
+    top: 18px;
+    left: 8px;
+    font-size: 12.5px!important;
+    background: 0 0;
+    bottom: auto;
+    right: auto;
+    margin-top: 0;
+    line-height: 16px;
+    
+    z-index: 9;
+    background-color: #fff;
+    
+    width: 80%;
+    line-height: 30px;
+    pointer-events: none;
+    
+    transition: all .235s ease;
+  }
+  
+  .firststep_checkout_input_label_top {
+    
+    color: rgb(136, 136, 136);
+    
+    position: absolute;
+      
+    top: 8px;
+    left: 10px;
+    font-size: 12.5px!important;
+    background: 0 0;
+    bottom: auto;
+    right: auto;
+    margin-top: 0;
+    line-height: 15px;
+  }
+  
+</style>
+
+<div id="tc-dco-section" class="tc-dco-section alternating-section-bg-color <?= $extra_css_classes ?>">
+  <div class="tc-container-large py-3">
+    <?php if ($fields['checkout_headline']): ?>
+      <h2 id="dco_alpha_next_step_headline" class="dco-headline header-lg mb-3 bold t-center"><?= $fields['checkout_headline'] ?></h2>
+    <?php endif; ?>
+    <div class="tc-grid tc-grid-col-2 tc-grid-mobile-reverse col-gap-lg row-gap-md">
+      <div>
+        <!-- The reviews section  -->
+        <?php tc_reviews($fields['reviews']); ?>
+      </div>
+      <div>
+        <!-- The DCO and What You Really Get card -->
+        <?php tc_benefits_card($fields['challenge_price'], "mb-3 hidden") ?>
+
+        <div
+          id="tc-dco-form"
+          class="card has-element-view-event"
+          data-element-category="dco checkout form"
+          data-element-subcategory=""
+          data-source-content="<?= $challenge_id ?>"
+        >
+            
+            <div id="step1-checkout-container">
+            
+                <div id="step1-checkout-classic">
+                    <ul id="step1-checkout-error-list-classic">
+                    </ul>
+                    
+                    <h2 style="display:none;" id="cdco-pricing-table-headline" class="tm-title tm-pt-title">Sign Up Now</h2>
+                
+                    <div id="step1-checkout-wrapper" class="wfacp-row wfacp_main_form woocommerce wfacp_single_multi_form wfacp_two_step">
+                         
+                        <div class="step1-checkout-input-wrapper">
+                            <label class="firststep_checkout_input_label_center">First Name * </label>
+                            <input id="step1-checkout-classic-firstName-input" class="step1-checkout-input" type="text"  name="first_name" id="first_name" placeholder="Joe" value="" autocomplete="given-name" onfocus="firststep_checkout_element_focus(this)" onblur="firststep_checkout_element_validation(this)">
+                        </div>
+                        
+                        <div class="step1-checkout-input-wrapper">
+                            <label class="firststep_checkout_input_label_center">Last Name * </label>
+                            <input id="step1-checkout-classic-lastName-input" class="step1-checkout-input" type="text"  name="last_name" id="last_name" placeholder="Doe" value="" autocomplete="family-name" onfocus="firststep_checkout_element_focus(this)" onblur="firststep_checkout_element_validation(this)">
+                        </div>
+                        
+                        <div id="step1-checkout-classic-email-input-wrapper" class="step1-checkout-input-wrapper">
+                            <label class="firststep_checkout_input_label_center">Email * </label>
+                            <input id="step1-checkout-classic-email-input" class="step1-checkout-input" type="email"  name="billing_email" id="billing_email" placeholder="john.doe@example.com " value="" autocomplete="email username" onfocus="firststep_checkout_element_focus(this)" onblur="firststep_checkout_element_validation(this)">
+                        </div>
+                    
+                    </div>
+                    
+                    <a
+                      id="step1-checkout-nextstep-button"
+                      href="<?php 
+                                
+                                $checkout_url = get_field("checkout_url");
+            
+                                // Check if the '#product_switching_field' fragment is NOT already in the URL.
+                                // We use strpos() which is fast. The '===' is important to avoid bugs.
+                                if (strpos($checkout_url, '#product_switching_field') === false) {
+                                    // If it's not there, append it.
+                                    $checkout_url .= '#product_switching_field';
+                                }
+                                
+                                // Print the final, correct URL.
+                                echo $checkout_url;
+                            ?>"
+                      type="button"
+                      class="has-element-click-event <?= get_field("colors")["cta_button_background_color"] ? "custom_cta_button_bg_color" : "" ?> <?= get_field("colors")["cta_button_text_color"] ? "custom_cta_button_text_color" : "" ?>"
+                      data-element-category="signup"
+                      data-element-subcategory="Single"
+                      data-source-content="<?= $challenge_id ?>"
+                    >
+                        <span class="label">NEXT STEP →</span>
+                        <span class="spinner" aria-hidden="true"></span>
+                        <span class="bar" aria-hidden="true"></span>
+                    </a>
+                </div>
+                
+                <style>
+                    #step1-checkout-nextstep-button.is-loading {
+                        pointer-events: none;            /* block extra clicks */
+                        opacity: .9;
+                      }
+                
+                      /* Spinner */
+                      #step1-checkout-nextstep-button .spinner {
+                    width: 16px;
+                    height: 16px;
+                    border: 2px solid rgba(255,255,255,.4);
+                    border-top-color: #fff;
+                    border-radius: 50%;
+                    display: none;                   /* hidden by default */
+                    animation: spin 1s linear infinite;
+                  }
+                  #step1-checkout-nextstep-button.is-loading .spinner {
+                    display: inline-block;
+                  }
+                  @keyframes spin { to { transform: rotate(360deg); } }
+                
+                  /* 1s bottom progress bar */
+                  #step1-checkout-nextstep-button .bar {
+                    position: absolute;
+                    left: 0; bottom: 0;
+                    height: 3px;
+                    width: 0;
+                    background: rgba(255,255,255,.95);
+                  }
+                  #step1-checkout-nextstep-button.is-loading .bar {
+                    animation: fill 1s linear forwards;
+                  }
+                  @keyframes fill { to { width: 100%; } }
+
+                </style>
+
+                <div id="step1-checkout-offer-route">
+                
+                    <div id="routing-offer-container">
+                        <h2 id="routing-offer-headline">Want <b>20% OFF</b> and up to <b>2 FREE</b> challenges?</h2>
+                        <h5 id="routing-offer-subheadline">Our <b>New Year's Offer</b> lets you build your 2024 bundle</h5>
+                        <div id="routing-offer-buttons-container" >
+                            <a class="cta-button-color-outline"
+                                href="<?php if (get_field("checkout_url")) {
+                                      echo(get_field("checkout_url"));
+                                      } else {
+                                          echo("https://www.theconqueror.events/checkouts/2s-checkout/?aero-add-to-checkout=" . get_field("challenge_product_id_entry_plus_medal") . "#product_switching_field");
+                                      }
+                                    ?>"
+                            >No, Continue Sign Up</a>
+                            <a class="cta-button-color-fill" href="https://www.theconqueror.events/ny24-config/">Get New Year's Deal</a>
+                        </div>
+                    </div>
+                
+                    <div id="step1-checkout-offer-route-form-container">
+                        <ul id="step1-checkout-error-list">
+                        </ul>
+                        
+                        <h2 style="display:none;" id="cdco-pricing-table-headline" class="tm-title tm-pt-title">Sign Up Now</h2>
+                    
+                        <div id="step1-checkout-wrapper" class="wfacp-row wfacp_main_form woocommerce wfacp_single_multi_form wfacp_two_step">
+                             
+                            <div class="step1-checkout-input-wrapper">
+                                <label class="firststep_checkout_input_label_center">First Name * </label>
+                                <input id="step1-checkout-routeOffer-firstName-input" class="step1-checkout-input" type="text"  name="first_name" id="first_name" placeholder="Joe" value="" autocomplete="given-name" onfocus="firststep_checkout_element_focus(this)" onblur="firststep_checkout_element_validation(this)">
+                            </div>
+                            
+                            <div class="step1-checkout-input-wrapper">
+                                <label class="firststep_checkout_input_label_center">Last Name * </label>
+                                <input id="step1-checkout-routeOffer-lastName-input" class="step1-checkout-input" type="text"  name="last_name" id="last_name" placeholder="Doe" value="" autocomplete="family-name" onfocus="firststep_checkout_element_focus(this)" onblur="firststep_checkout_element_validation(this)">
+                            </div>
+                            
+                            <div id="step1-checkout-classic-email-input-wrapper" class="step1-checkout-input-wrapper">
+                                <label class="firststep_checkout_input_label_center">Email * </label>
+                                <input id="step1-checkout-routeOffer-email-input" class="step1-checkout-input" type="email"  name="billing_email" id="billing_email" placeholder="john.doe@example.com " value="" autocomplete="email username" onfocus="firststep_checkout_element_focus(this)" onblur="firststep_checkout_element_validation(this)">
+                            </div>
+                        
+                        </div>
+                        
+                        <a
+                          id="step1-checkout-nextstep-button-route-offer"
+                          class="has-element-click-event cta-button-color-fill <?= get_field("colors")["cta_button_background_color"] ? "custom_cta_button_bg_color" : "" ?> <?= get_field("colors")["cta_button_text_color"] ? "custom_cta_button_text_color" : "" ?>"
+                          href="javascript:void(0);"
+                          type="button"
+                          data-element-category="signup"
+                          data-element-subcategory="Single"
+                          data-source-content="<?= $challenge_id ?>"
+                        >
+                            Next Step →
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+          
+          <div class="form-flex-container pb-2 px-1">
+          
+            <div class="flex-element mr-3">
+                <i class="fas fa-lock mb-1"></i>
+                <p class="flex-title">Secure Checkout</p>
+            </div>
+          
+            <div class="flex-element mr-3">
+              <i class="fas fa-check-circle mb-1"></i>
+              <p class="flex-title">100% Satisfaction</p>
+            </div>
+            
+            <div class="flex-element">
+              <i class="fas fa-user-secret mb-1"></i>
+              <p class="flex-title">We Protect Your Privacy</p>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const inputs = document.querySelectorAll(".step1-checkout-input");
+
+        inputs.forEach(function(input) {
+            if (typeof firststep_checkout_element_focus === "function") {
+                firststep_checkout_element_focus(input);
+            }
+        });
+    });
+
+    function firststep_checkout_element_focus(e) {
+        
+        var label = e.parentElement.getElementsByTagName('label')[0];
+        label.classList.add('firststep_checkout_input_label_top');
+        
+        if (label.classList.contains('firststep_checkout_input_label_center')) {
+            label.classList.remove('firststep_checkout_input_label_center');
+        }
+        
+        e.style.border = "1px solid #8ed1fc";
+    }
+
+    function firststep_checkout_element_validation(e) {
+        
+        var label = e.parentElement.getElementsByTagName('label')[0];
+        
+        if (e.value === '') {
+            label.classList.add('firststep_checkout_input_label_center');
+            
+            if (label.classList.contains('firststep_checkout_input_label_top')) {
+                label.classList.remove('firststep_checkout_input_label_top');
+            }
+            
+            e.style.border = "1px solid red";
+
+        } else {
+            e.style.border = "1px solid #bfbfbf";
+            
+            if (label.classList.contains('firststep_checkout_input_label_center')) {
+                label.classList.remove('firststep_checkout_input_label_center');
+            }
+            
+            label.classList.add('firststep_checkout_input_label_top');
+        }
+    }
+    
+    /*
+    if (sessionStorage.getItem("1s_checkout_fn") !== null) {
+        firstNameInput.value = sessionStorage.getItem("1s_checkout_fn");
+        firststep_checkout_element_validation(firstNameInput);
+    }
+    
+    if (sessionStorage.getItem("1s_checkout_ln") !== null) {
+        lastNameInput.value = sessionStorage.getItem("1s_checkout_ln");
+        firststep_checkout_element_validation(lastNameInput);
+    }
+    
+    if (sessionStorage.getItem("1s_checkout_email") !== null) {
+        emailInput.value = sessionStorage.getItem("1s_checkout_email");
+        firststep_checkout_element_validation(emailInput);
+    }
+    */
+    
+    var nextStepButton = document.getElementById("step1-checkout-nextstep-button");
+    nextStepButton.addEventListener("click", validateFirstStepDetails);
+    
+    var nextStepButtonRouteOffer = document.getElementById("step1-checkout-nextstep-button-route-offer");
+    nextStepButtonRouteOffer.addEventListener("click", validateFirstStepDetailsRouteOffer);
+    
+    
+    function validate_email_address(email_address) {
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(email_address);
+    }
+    
+    function validateFirstStepDetails(e) {
+        var firstNameInput = document.getElementById("step1-checkout-classic-firstName-input");
+        var lastNameInput = document.getElementById("step1-checkout-classic-lastName-input");
+        var emailInput = document.getElementById("step1-checkout-classic-email-input");
+        
+        var step1_checkout_error_list = document.getElementById('step1-checkout-error-list-classic');
+        step1_checkout_error_list.innerHTML = '';
+
+        if (firstNameInput.value === "") {
+            
+            firstNameInput.style.border = "1px solid red";
+            
+            var li = document.createElement("li");
+            li.innerHTML = "First Name is a required field";
+            step1_checkout_error_list.appendChild(li);
+        }
+        
+        if (lastNameInput.value === "") {
+            
+            lastNameInput.style.border = "1px solid red";
+            
+            var li = document.createElement("li");
+            li.innerHTML = "Last Name is a required field";
+            step1_checkout_error_list.appendChild(li);
+        }
+        
+        if (!validate_email_address(emailInput.value)) {
+            
+            emailInput.style.border = "1px solid red";
+            
+            var li = document.createElement("li");
+
+            li.innerHTML = "A valid Email Address is required";
+            console.log(li)
+            console.log(step1_checkout_error_list)
+            step1_checkout_error_list.appendChild(li);
+            console.log(step1_checkout_error_list)
+        }
+        
+    
+        if (firstNameInput.value !== "" && lastNameInput.value !== "" && validate_email_address(emailInput.value)) { // Valid
+            submit_valid_first_step_inputs(firstNameInput, lastNameInput, emailInput);
+            
+            e.preventDefault();
+            
+            const btn = document.getElementById('step1-checkout-nextstep-button');
+            const label = btn.querySelector('.label');
+            
+            const href = btn.getAttribute('href');
+            
+            label.textContent = 'Reserving your spot…';
+            if (btn.classList.contains('is-loading')) return; // guard
+            btn.classList.add('is-loading');
+            btn.setAttribute('aria-busy', 'true');
+        
+            // do your work here if needed, then finish after ~1s
+            setTimeout(function () {
+              btn.classList.remove('is-loading');
+              btn.removeAttribute('aria-busy');
+        
+              // continue to the original destination if present
+              if (href && href !== 'javascript:void(0);') {
+                window.location.href = href;
+              }
+            }, 2000);
+            
+        } else { // Invalid data
+            //alert("invalid data");
+            e.stopPropagation();
+            e.preventDefault();
+        } 
+    }
+    
+    function validateFirstStepDetailsRouteOffer(e) {
+        var firstNameInput = document.getElementById("step1-checkout-routeOffer-firstName-input");
+        var lastNameInput = document.getElementById("step1-checkout-routeOffer-lastName-input");
+        var emailInput = document.getElementById("step1-checkout-routeOffer-email-input");
+                
+        var step1_checkout_error_list = document.getElementById('step1-checkout-error-list');
+        step1_checkout_error_list.innerHTML = '';
+        
+        if (firstNameInput.value === "") {
+            
+            firstNameInput.style.border = "1px solid red";
+            
+            var li = document.createElement("li");
+            li.innerHTML = "First Name is a required field";
+            step1_checkout_error_list.appendChild(li);
+        }
+        
+        if (lastNameInput.value === "") {
+            
+            lastNameInput.style.border = "1px solid red";
+            
+            var li = document.createElement("li");
+            li.innerHTML = "Last Name is a required field";
+            step1_checkout_error_list.appendChild(li);
+        }
+        
+        if (!validate_email_address(emailInput.value)) {
+            emailInput.style.border = "1px solid red";
+            var li = document.createElement("li");
+            li.innerHTML = "A valid Email Address is required";
+            step1_checkout_error_list.appendChild(li);
+        }
+        
+    
+        if (firstNameInput.value !== "" && lastNameInput.value !== "" && validate_email_address(emailInput.value)) { // Valid
+                
+            submit_valid_first_step_inputs(firstNameInput, lastNameInput, emailInput); 
+                        
+            document.getElementById("step1-checkout-offer-route-form-container").style.display = "none";
+            document.getElementById("routing-offer-container").style.display = "block";
+            
+            
+        } else { // Invalid data
+        
+        
+            //alert("invalid data");
+            e.stopPropagation();
+            e.preventDefault();
+        } 
+    }
+    
+    function trigger_cdco_email_lead_dl_event() {
+    
+        var first_name_input = document.getElementById("step1-checkout-classic-firstName-input");
+        var last_name_input = document.getElementById("step1-checkout-classic-lastName-input");
+        var email_input = document.getElementById("step1-checkout-classic-email-input");
+        
+        var lead_first_name = first_name_input.value;
+        var lead_last_name = last_name_input.value;
+        var lead_email = email_input.value;
+        
+        var email_lead_details = {
+            'leadEmail': lead_email,
+            'leadFirstName': lead_first_name,
+            'leadLastName': lead_last_name
+        };
+    
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'Email Lead Submit',
+            'emailLeadType': 'cDCO Email Lead',
+            'emailLeadDetails': email_lead_details,
+            'challengeName': <?= json_encode(isset($fields['challenge_name']) ? $fields['challenge_name'] : "Your Challenge") ?>,
+            'challengeImageUrl': <?= json_encode(isset($fields['challenge_image']) ? $fields['challenge_image'] : "Challenge Image") ?>
+        });
+    }
+    
+    function store_first_step_inputs(firstNameInput, lastNameInput, emailInput) {
+        
+        first_name_value = firstNameInput.value;
+        last_name_value = lastNameInput.value;
+        email_value = emailInput.value;
+        
+        sessionStorage.setItem("1s_checkout_fn", first_name_value);
+        sessionStorage.setItem("1s_checkout_ln", last_name_value);
+        sessionStorage.setItem("1s_checkout_email", email_value);
+        sessionStorage.setItem("2step_checkout_prefill_checkout", "To prefill");
+
+        var userObject = {
+            firstName: first_name_value,
+            lastName: last_name_value,
+            email: email_value
+        };
+    
+        var dateExpires = new Date();
+        var expiresInSeconds = 3600;
+        dateExpires.setTime(dateExpires.getTime() + (expiresInSeconds*1000));
+    
+        document.cookie =
+            "__wc_user_identification=" + 
+            btoa(JSON.stringify(userObject)) +
+            "; expires=" + dateExpires.toUTCString() + 
+            "; domain=theconqueror.events" +
+            "; path=/" + 
+            "; Secure" + 
+            "; SameSite=Lax";
+    }
+    
+    function submit_valid_first_step_inputs(firstNameInput, lastNameInput, emailInput) {
+        
+        // Trigger a Data Layer event for the Email Lead event
+        trigger_cdco_email_lead_dl_event();
+        
+        // Store First Step inputs in sessionStorage so they can be retrieved on the Checkout page 
+        store_first_step_inputs(firstNameInput, lastNameInput, emailInput);
+        
+    }
+
+    var tcDcoBtnNext = document.querySelector('.wfacp_next_page_button');
+    if (tcDcoBtnNext) {
+        tcDcoBtnNext.addEventListener("click", showBenefitsCard);
+    }
+    
+    function showBenefitsCard() {
+        /* Check first step values and return if they are invalid */
+        const tcFirstName = document.getElementById('billing_first_name').value;
+        const tcLastName = document.getElementById('billing_last_name').value;
+        const tcEmail = document.getElementById('billing_email').value;
+        const emailRegEx = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+        
+        if (
+          !tcFirstName || !tcLastName || !tcEmail ||
+          !tcEmail.match(emailRegEx)
+        ) {
+          return; // Input validation will fail and form will not proceed to second step. We don't show benefits card yet.
+        }
+        
+        document.querySelector('.tc-benefits-card').classList.remove('hidden');
+    }
+
+</script>
+
+<?php
+}
+?>

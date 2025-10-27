@@ -33,8 +33,13 @@ const CtaCdco: React.FC<CtaCdcoProps> = ({
             <Button
               asChild
               size="lg"
-              className="mb-4 rounded-lg py-6 inline-flex items-center justify-center border-2 text-lg md:text-xl border-primary text-primary font-semibold px-8 transition-all duration-300"
-              onClick={() => initiateCheckout("John", "Doe", "john.doe@example.com")}
+              className="mb-4 cursor-pointer rounded-lg py-6 inline-flex items-center w-full justify-center border-2 text-lg md:text-xl border-primary font-semibold px-8 transition-all duration-300"
+              onClick={() => {
+                const formSection = document.getElementById('get-started');
+                if (formSection) {
+                  formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             >
               <p>
                 {buttonText}

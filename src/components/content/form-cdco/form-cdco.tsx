@@ -152,7 +152,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
         setLoading(false);
     } else {
       setTimeout(() => {
-        // window.location.href = 'https://store.theconqueror.events/store/single/single?item=1611';
+        window.location.href = 'https://store.theconqueror.events/store/single/single?item=1611';
         // setLoading(false);
       }, 2000);
     }

@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Star, Lock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import { Spinner } from '@/components/ui/spinner';
 import { Badge } from '@/components/ui/badge';
 import { initiateCheckout } from '@/hooks/useCheckout';
 import { Spinner } from '@/components/ui/spinner';

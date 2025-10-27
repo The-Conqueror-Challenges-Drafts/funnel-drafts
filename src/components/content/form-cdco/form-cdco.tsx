@@ -152,7 +152,7 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
         setLoading(false);
     } else {
       setTimeout(() => {
-        window.location.href = 'https://store.theconqueror.events/store/single/single?item=1611';
+        // window.location.href = 'https://store.theconqueror.events/store/single/single?item=1611';
         // setLoading(false);
       }, 2000);
     }
@@ -244,17 +244,18 @@ const FormCdco: React.FC<FormCdcoProps> = memo(({
                         onClick={() => {
                           handleSubmit();
                         }}
-                        asChild
+                        disabled={loading}
                         size="lg"
                         className="w-full cursor-pointer font-bold px-8 py-6 text-xl mb-4 md:mb-0 rounded-lg transition-all duration-300"
                       >
-                          {loading ? 
+                          {loading ? (
                             <div className="w-full flex justify-center items-center gap-2">
                               <p>Reserving your spot...</p>
                               <Spinner className='w-5 h-5'/>
-                            </div> 
-                          : 
-                          <p>{buttonText}</p>}
+                            </div>
+                          ) : (
+                            buttonText
+                          )}
                       </Button>
                     </div>
                     

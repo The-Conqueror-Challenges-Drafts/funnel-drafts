@@ -92,5 +92,4 @@ export function storeFirstStepInputs(firstName: string, lastName: string, email:
         "; path=/" +
         "; Secure" +
         "; SameSite=Lax";
-
 }

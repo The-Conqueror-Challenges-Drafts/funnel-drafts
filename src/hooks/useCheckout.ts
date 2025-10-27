@@ -16,8 +16,6 @@ export const initiateCheckout = (firstName: string, lastName: string, email: str
 
     triggerCdcoEmailLeadDlEvent(firstName, lastName, email, "Challenge Name", "Challenge Image URL");
     storeFirstStepInputs(firstName, lastName, email);
-
-
 }
 
 

@@ -58,7 +58,7 @@ interface GTMEcommerceItem {
   price?: number
 }
 
-type GTMDataLayerItem = Record<string, string | number | boolean | undefined | GTMEcommerceItem[]>
+type GTMDataLayerItem = Record<string, string | number | boolean | undefined | GTMEcommerceItem[] | object | Array<any>>
 
 // Utility functions for Google Tag Manager
 export const gtm = {

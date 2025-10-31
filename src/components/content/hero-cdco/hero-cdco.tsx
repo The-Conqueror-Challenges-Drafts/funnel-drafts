@@ -24,7 +24,6 @@ const HeroCdco: React.FC<HeroCdcoProps> = ({
   subtitle,
   features,
   buttonText,
-  buttonUrl,
   image,
   imageAlt
 }) => {
@@ -53,12 +52,8 @@ const HeroCdco: React.FC<HeroCdcoProps> = ({
               <div className='flex flex-col items-center gap-2'>
                 <div className='flex flex-wrap gap-2 w-full justify-center md:justify-start'>
                   <Badge className="text-lg" variant="secondary-foreground">
-                    {badge}
+                    {badge} <Timer size="3em" strokeWidth={3}/> <TimerCountUp/> 
                   </Badge>
-
-                  <div className='flex flex-wrap gap-4 justify-center'>
-                    <div className='text-secondary text-md flex gap-1 items-center'><Timer size="1.2em"/> Limited time <TimerCountUp/> </div>
-                  </div>
                 </div>
 
                 <h1 className="text-xl md:text-3xl font-semibold text-foreground mb-2 md:leading-10">

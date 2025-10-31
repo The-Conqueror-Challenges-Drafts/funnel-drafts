@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 		}
 
 		return NextResponse.json(payload, { status: klaviyoResponse.status });
-	} catch (error) {
+	} catch {
 		return NextResponse.json(
 			{ error: "Failed to contact Klaviyo server" },
 			{ status: 502 }

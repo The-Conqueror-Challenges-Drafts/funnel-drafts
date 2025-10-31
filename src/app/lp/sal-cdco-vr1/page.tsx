@@ -1,4 +1,3 @@
-import React from 'react';
 import { getPageData } from './utm';
 import defaultContent from './content/c1.json';
 import defaultLayout from './layout/l1.json';
@@ -18,10 +17,21 @@ interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
+type ComponentMap = {
+  HeaderCdco: typeof HeaderCdco;
+  HeroCdco: typeof HeroCdco;
+  TrustedCdco: typeof TrustedCdco;
+  ReasonsCdco: typeof ReasonsCdco;
+  FeaturesCdco: typeof FeaturesCdco;
+  FormCdco: typeof FormCdco;
+  CtaCdco: typeof CtaCdco;
+  FooterCdco: typeof FooterCdco;
+};
+
 export default async function Page({ searchParams }: PageProps) {
 
   // Component mapping - just add your components here
-  const componentMap = {
+  const componentMap: ComponentMap = {
     HeaderCdco,
     HeroCdco,
     TrustedCdco,
@@ -49,7 +59,7 @@ export default async function Page({ searchParams }: PageProps) {
       <div className="min-h-screen">
         {visibleComponents.map(([name]) => {
           const componentName = name.charAt(0).toUpperCase() + name.slice(1) + 'Cdco';
-          const Component = componentMap[componentName as keyof typeof componentMap];
+          const Component = componentMap[componentName as keyof ComponentMap];
           if (!Component) return null;
           
           const props = content[name] || {};

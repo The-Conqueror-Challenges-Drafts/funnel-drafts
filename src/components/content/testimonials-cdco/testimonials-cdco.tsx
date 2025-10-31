@@ -4,7 +4,6 @@ import React from 'react';
 import Image from 'next/image';
 import { Star, Lock, Shield, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 interface Testimonial {
   quote: string;

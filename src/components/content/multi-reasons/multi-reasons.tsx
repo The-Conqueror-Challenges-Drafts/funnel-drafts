@@ -76,7 +76,7 @@ const MultiReasons: React.FC<MultiReasonsProps> = ({
               {item.testimonial && (
                 <div className="mb-6">
                   <p className="text-muted-foreground text-sm md:text-base leading-relaxed italic font-medium">
-                    "{item.testimonial}"
+                    &ldquo;{item.testimonial}&rdquo;
                   </p>
                 </div>
               )}

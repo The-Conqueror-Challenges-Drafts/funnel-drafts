@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { CheckCircle, Award, Smartphone, Calendar, MapPin } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
 
 interface ReasonsCdcoProps {
   title: string;
@@ -33,11 +32,11 @@ const ReasonsCdco: React.FC<ReasonsCdcoProps> = ({
               const IconComponent = icons[index] || CheckCircle;
               return (
                 <div key={index} className="group flex items-center space-x-4 cursor-default transition-all duration-300">
-                  <div className="flex justify-center items-center w-10 h-10 bg-muted rounded-lg lg:h-16 lg:w-16 flex-shrink-0 transition-all duration-300 group-hover:bg-primary/10 group-hover:shadow-md">
+                  <div className="flex justify-center items-center w-10 h-10 bg-muted rounded-lg lg:h-16 lg:w-16 flex-shrink-0 transition-all duration-300">
                     <IconComponent className="w-5 h-5 text-primary lg:w-8 lg:h-8 transition-all duration-300" />
                   </div>
                   <div className="text-left">
-                    <p className="leading-tight font-medium text-sm md:text-md text-foreground transition-colors duration-300 group-hover:text-foreground">
+                    <p className="leading-tight font-medium text-sm md:text-md text-foreground transition-colors duration-300">
                       <b>{feature.title}</b>. {feature.description}
                     </p>
                   </div>

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { initiateCheckout } from '@/hooks/useCheckout';
 
 interface CtaCdcoProps {
   badge: string;
@@ -14,8 +13,7 @@ interface CtaCdcoProps {
 const CtaCdco: React.FC<CtaCdcoProps> = ({
   badge,
   title,
-  buttonText,
-  buttonUrl
+  buttonText
 }) => {
   return (
     <>

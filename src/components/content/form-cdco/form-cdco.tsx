@@ -1,6 +1,6 @@
 'use client';
 
-import { SiAppstore, SiAppstoreHex, SiGoogleplay, SiGoogleplayHex, SiTrustpilot, SiTrustpilotHex } from '@icons-pack/react-simple-icons';
+import { SiAppstore, SiGoogleplay, SiTrustpilot, SiTrustpilotHex } from '@icons-pack/react-simple-icons';
 import React, { useState, useCallback, useMemo, memo } from 'react';
 import Image from 'next/image';
 import { Star, Lock, Shield, Users } from 'lucide-react';
@@ -115,7 +115,6 @@ FloatingLabelInput.displayName = 'FloatingLabelInput';
 const FormCdco: React.FC<FormCdcoProps> = memo(({
   ctaTitle,
   buttonText,
-  buttonUrl,
   trustIndicators,
   testimonials
 }) => {

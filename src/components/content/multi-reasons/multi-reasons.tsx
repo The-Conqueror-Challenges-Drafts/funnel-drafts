@@ -9,6 +9,8 @@ interface ListItem {
   description?: string;
   testimonial: string;
   author: string;
+  image?: string;
+  video?: string;
   imageQuery: string;
   avatarQuery: string;
 }
@@ -23,10 +25,10 @@ const MultiReasons: React.FC<MultiReasonsProps> = ({
   listItems
 }) => {
   return (
-    <section className="bg-background py-12 md:py-20">
-      <div className="container mx-auto px-4 max-w-6xl">
+    <section className="bg-background py-4 md:py-6">
+      <div className="container mx-auto px-4 max-w-6xl" data-reasons-section>
         <motion.h2 
-          className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 text-balance text-foreground"
+          className="text-xl md:text-3xl font-bold text-left mb-8 md:mb-10 text-balance text-foreground"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -39,6 +41,7 @@ const MultiReasons: React.FC<MultiReasonsProps> = ({
           {listItems.map((item, index) => (
             <motion.div 
               key={index} 
+              data-reason-item
               className="bg-card rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-border group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -51,26 +54,37 @@ const MultiReasons: React.FC<MultiReasonsProps> = ({
                 {index + 1}. {item.title}
               </h3>
 
+              {/* Illustration */}
+              <motion.div 
+                className="relative w-full aspect-square rounded-xl overflow-hidden bg-muted mb-6 shadow-md"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                {item.video ? (
+                  <video
+                    src={item.video}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <Image
+                    src={item.image || `/.jpg?key=${index}&height=400&width=640&query=${item.imageQuery}`}
+                    alt={`Illustration for ${item.title}`}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
+              </motion.div>
+
               {/* Description */}
               {item.description && (
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
                   {item.description}
                 </p>
               )}
-
-              {/* Illustration */}
-              <motion.div 
-                className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-muted mb-6 shadow-md"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Image
-                  src={`/.jpg?key=${index}&height=400&width=640&query=${item.imageQuery}`}
-                  alt={`Illustration for ${item.title}`}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </motion.div>
 
               {/* Testimonial (only if exists) */}
               {item.testimonial && (

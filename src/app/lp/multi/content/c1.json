@@ -6,9 +6,18 @@
   "multi-hero": {
     "title": "How a Million People Finally Achieved Their Fitness Goals Using This \"Gamified Fitness\" Method",
     "intro": "Watch someone finish their 10th marathon and hold up that medal. Feel that twist in your chest? That's not admiration—that's your brain recognizing what you don't have. A finish line you can see. A trophy you can hold. Proof you actually did something.",
-    "mainText": "Traditional fitness gives you none of that, so your brain gives up. Virtual Challenges turn every move into an adventure. Pick a challenge, watch your progress along gorgeous routes, and unlock rewards at each milestone. And when you're done? You get a physical medal, just like a marathon. Simple, right? But crazy effective. Read on to see why over 1 million people have completed these challenges.",
+    "video": "/assets/multi/hero-video.mp4",
     "image": "/virtual-challenge-medal-celebration.jpg",
+    "mainText": "Virtual Challenges turn every move into an adventure. Pick a challenge, watch your progress along gorgeous routes, and unlock rewards at each milestone. And when you're done? You get a physical medal, just like a marathon. Simple, right? But crazy effective.",
     "imageAlt": "Person holding finisher medal with pride after completing virtual fitness challenge"
+  },
+  "multi-cta-button": {
+    "tldrText": "Starting a Virtual Challenges boost your chance of achieving fitness goals by 327%.",
+    "buttonText": "Check Availability"
+  },
+  "multi-sticky-cta": {
+    "buttonText": "Check Availability",
+    "lowStockText": "Low Stock Alert"
   },
   "multi-reasons": {
     "sectionTitle": "10 Reasons Why Virtual Challenges Help Non-Exercisers Achieve Their Fitness Goals",
@@ -16,8 +25,8 @@
       {
         "title": "You Earn a Real, Weighty Medal You'll Show Off With Pride",
         "description": "When you finish a Conqueror Challenge, we mail you a finisher's medal made of solid metal. Each one has a gorgeous design, inspired by the route you just conquered.",
-        "testimonial": "I expected the medal to be pretty cheap, but it's fantastic! Holding it makes the whole journey feel so real. Wow, I did that.",
-        "author": "Sarah M.",
+        
+        "video": "/assets/multi/reason1.mp4",
         "imageQuery": "close-up of hands holding beautiful solid metal finisher medal with intricate route-inspired design",
         "avatarQuery": "woman smiling proudly showing off medal"
       },
@@ -26,22 +35,23 @@
         "description": "Remember when you couldn't stop reading that book? Or binging that show? Same thing happens here. Virtual challenges turn fitness into a game with a clear goal. That's why the challenges provide sustained motivation where willpower alone fails.",
         "testimonial": "",
         "author": "",
+        "image": "/assets/multi/reason2.png",
         "imageQuery": "person engaged with fitness app showing gamified progress map with clear goals and milestones",
         "avatarQuery": ""
       },
       {
         "title": "9 out of 10 First-Timers Actually Finish",
-        "description": "Regular fitness programs have completion rates under 20%. So how did a million people finish a challenge? Because your brain understands \"I'm walking to Machu Picchu.\" It doesn't understand \"I need to do 10,000 steps because a doctor said so.\"",
-        "testimonial": "I'm 63 and recently retired. The Conqueror gave me that incentive to keep active. Every gardening session, every walk to the shops, it all adds up.",
-        "author": "Margaret H.",
+        "description": "Regular fitness programs have completion rates under 20% ",
+        "testimonial": "I'm 46 and work at a desk all day. I went from barely doing 2k steps to an average of 8k. There's something about these challenges that has really motivated me to keep on moving.",
+        "author": "Jennifer L.",
+        "image": "/assets/multi/reason3.png",
         "imageQuery": "senior person celebrating reaching virtual Machu Picchu milestone on app with scenic mountain background",
         "avatarQuery": "senior woman smiling warmly outdoors with garden background"
       },
       {
         "title": "You'll Keep Moving, Without Trying",
         "description": "Playing tag with your kids? Counts. Gardening? Counts. Pacing on a call? Counts. No more guilt about skipping the gym. Suddenly you notice opportunities to move instead of avoiding them.",
-        "testimonial": "I'm 46 and work at a desk all day. I went from barely doing 2k steps to an average of 8k. There's something about these challenges that has really motivated me to keep on moving.",
-        "author": "Jennifer L.",
+        
         "imageQuery": "parent playing actively with kids outdoors with fitness tracker showing steps counting",
         "avatarQuery": "professional woman smiling confidently in casual attire"
       },
@@ -56,8 +66,8 @@
       {
         "title": "You Get to Explore the World From Anywhere",
         "description": "Trek Patagonia from your neighborhood. Walk the Great Wall while on your treadmill. Every milestone unlocks fun in-app rewards about your route.",
-        "testimonial": "I love seeing the virtual postcards when I hit a milestone! Using Street View to see where I am on the route is so cool. It's like a mini-vacation every day.",
-        "author": "Amanda C.",
+        
+        "image": "/assets/multi/reason6.webp",
         "imageQuery": "phone screen showing virtual postcard of Patagonia with street view integration and beautiful scenic route",
         "avatarQuery": "woman smiling excitedly looking at phone with world map background"
       },
@@ -66,6 +76,7 @@
         "description": "With every challenge you help the environment. So far, Conquerors have planted over 7 million trees and removed 14 million plastic bottles from the ocean.",
         "testimonial": "Knowing that my journey is also helping the environment is something that really helped me continue. I'm not just doing this for myself, but contributing to making the world a better place.",
         "author": "Carlos M.",
+        "image": "/assets/multi/reason7.webp",
         "imageQuery": "visualization showing trees being planted and ocean plastic bottles being removed with counter display",
         "avatarQuery": "man smiling warmly outdoors with green nature environment background"
       },
@@ -96,8 +107,9 @@
     ]
   },
   "multi-conversion": {
-    "sectionTitle": "Achieve your fitness goals and join 1 million conquerors",
-    "subtitle": "Start Your First Virtual Challenge Today",
+    "showCountdown": true,
+    "countdownText": "Virtual Challenges completed in the last",
+    "subtitle": "Start Today Because Waiting Only Makes It Harder to Begin",
     "benefits": [
       {
         "title": "100+ thrilling adventures to choose from in the app",
@@ -144,6 +156,26 @@
         "source": "App Store"
       }
     ],
+    "testimonials": [
+      {
+        "quote": "This has been the most motivating thing I've ever seen for getting myself up off the couch and being active!",
+        "author": "Melissa Clark",
+        "image": "/assets/o1/testimonial-1.jpg",
+        "rating": 5
+      },
+      {
+        "quote": "I have never been very good at exercising – I like the idea more than the practice! But it wouldn't be overstating the case to say that the Conqueror Challenges have completely changed my whole outlook on things.",
+        "author": "Tony Peterson",
+        "image": "/assets/o1/testimonial-2.jpg",
+        "rating": 5
+      },
+      {
+        "quote": "I started my journey in Sept 2021 with the Ring of Kerry Ring Challenge. Every day I do my best to get myself out of my chair and it's so worth it. Every day I have found a new route to walk.",
+        "author": "Magdalena Nel",
+        "image": "/assets/o1/testimonial-3.jpg",
+        "rating": 5
+      }
+    ],
     "howItWorks": [
       {
         "step": 1,
@@ -163,12 +195,6 @@
       }
     ],
     "buttonText": "Sign Up Now",
-    "buttonUrl": "https://theconqueror.events"
-  },
-  "multi-cta": {
-    "title": "Ready to Finally Feel Proud of Your Fitness Journey?",
-    "description": "Your past doesn't define your future. The person you want to be is waiting. Your journey starts with a single step. Choose a challenge that inspires you and discover what you're truly capable of.",
-    "buttonText": "See All Challenges & Get Started Today",
     "buttonUrl": "https://theconqueror.events"
   },
   "multi-footer": {

@@ -8,15 +8,15 @@
       "show": true,
       "order": 2
     },
-    "multi-reasons": {
+    "multi-cta-button": {
       "show": true,
       "order": 3
     },
-    "multi-conversion": {
+    "multi-reasons": {
       "show": true,
       "order": 4
     },
-    "multi-cta": {
+    "multi-conversion": {
       "show": true,
       "order": 5
     },

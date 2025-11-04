@@ -6,10 +6,12 @@ import defaultLayout from './layout/l1.json';
 // Import your components here - just add/remove as needed
 import MultiHeader from '@/components/content/multi-header/multi-header';
 import MultiHero from '@/components/content/multi-hero/multi-hero';
+import MultiCtaButton from '@/components/content/multi-cta-button/multi-cta-button';
 import MultiReasons from '@/components/content/multi-reasons/multi-reasons';
 import MultiConversion from '@/components/content/multi-conversion/multi-conversion';
-import MultiCta from '@/components/content/multi-cta/multi-cta';
+import MultiFinalIncentive from '@/components/content/multi-final-incentive/multi-final-incentive';
 import MultiFooter from '@/components/content/multi-footer/multi-footer';
+import MultiStickyCta from '@/components/content/multi-sticky-cta/multi-sticky-cta';
 
 interface PageProps {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -21,9 +23,10 @@ export default async function Page({ searchParams }: PageProps) {
   const componentMap = {
     MultiHeader,
     MultiHero,
+    MultiCtaButton,
     MultiReasons,
     MultiConversion,
-    MultiCta,
+    MultiFinalIncentive,
     MultiFooter,
   };
 
@@ -52,6 +55,9 @@ export default async function Page({ searchParams }: PageProps) {
         
         return <Component key={name} {...props} />;
       })}
+      
+      {/* Sticky CTA - Always rendered */}
+      <MultiStickyCta {...(content['multi-sticky-cta'] || {})} />
     </div>
   );
 }

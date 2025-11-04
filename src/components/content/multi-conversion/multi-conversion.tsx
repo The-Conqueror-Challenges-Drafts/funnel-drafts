@@ -43,8 +43,8 @@ interface MultiConversionProps {
   trustBadges: TrustBadge[];
   testimonials: Testimonial[];
   howItWorks: HowItWorksStep[];
-  buttonText: string;
-  buttonUrl: string;
+  buttonText?: string;
+  buttonUrl?: string;
 }
 
 export default function MultiConversion({
@@ -110,8 +110,10 @@ export default function MultiConversion({
     e.preventDefault()
     setLoading(true)
     console.log("Submitting:", { name, email })
-    // Redirect to buttonUrl
-    window.location.href = buttonUrl
+    // Redirect to buttonUrl if provided
+    if (buttonUrl) {
+      window.location.href = buttonUrl
+    }
   }
 
   const getIcon = (iconName: string) => {
@@ -178,7 +180,7 @@ export default function MultiConversion({
           {/* Form Section */}
           <div className="mb-8">
             {subtitle && (
-              <p className="text-md md:text-lg font-semibold text-foreground mb-4 text-center">
+              <p className="text-xl md:text-xl font-semibold text-foreground mb-4 text-center">
                 {subtitle}
               </p>
             )}
@@ -252,22 +254,6 @@ export default function MultiConversion({
               ))}
             </ul>
           </div>
-
-          <Button
-            onClick={handleSubmit}
-            disabled={loading}
-            size="lg"
-            className="w-full cursor-pointer font-bold px-8 py-6 text-xl rounded-lg transition-all duration-300 mb-2"
-          >
-            {loading ? (
-              <div className="w-full flex justify-center items-center gap-2">
-                <p>Reserving your spot...</p>
-                <Spinner className='w-5 h-5'/>
-              </div>
-            ) : (
-              buttonText
-            )}
-          </Button>
 
           <div className="flex gap-2 flex-wrap items-center justify-center pt-4 border-t border-border">
             <Badge variant="ghost" className='text-lg'>

@@ -1,0 +1,164 @@
+{
+  "multi-header": {
+    "logo": "/assets/shared/logo-tc.svg",
+    "alt": "The Conqueror"
+  },
+  "multi-hero": {
+    "title": "7 Reasons Virtual Challenges are the Last Fitness Program You'll Ever Start and How...",
+    "video": "/assets/multi/hero-video.mp4",
+    "image": "/virtual-challenge-medal-celebration.jpg",
+    "imageAlt": "Person holding finisher medal with pride after completing virtual fitness challenge",
+    "avatarText": "Over 1,000,000 people have already achieved their fitness goals this way."
+  },
+  "multi-sticky-cta": {
+    "buttonText": "Check Availability",
+    "lowStockText": "Low Stock Alert"
+  },
+  "multi-reasons": {
+    "listItems": [
+      {
+        "title": "It Kills Boredom Because You Are Exploring the World",
+        "description": "Stop forcing yourself through workouts. This is an adventure. You'll be driven by the desire to see what's next, whether you're following Harry Potter to Hogwarts or joining Frodo in Mordor.",
+        "image": "/assets/multi/reason5.webp",
+        "imageQuery": "person exploring virtual adventure route on app with exciting fantasy destinations",
+        "avatarQuery": ""
+      },
+      {
+        "title": "You Get a Real, Stunning Medal",
+        "description": "This isn't a digital badge. It's a stunning, heavy, visual proof of your achievement. Hang it on your wall as a constant reminder that you did it.",
+        "video": "/assets/multi/reason1.mp4",
+        "imageQuery": "close-up of hands holding beautiful solid metal finisher medal with intricate design",
+        "avatarQuery": ""
+      },
+      {
+        "title": "It's Impossible to \"Fall Behind\"",
+        "description": "Missed a week? No problem. This is your adventure, on your schedule. Run, walk, cycle, or swim at your own pace. It's built for real life, not perfection.",
+        "image": "/assets/multi/reason5.webp",
+        "imageQuery": "person comfortably exercising at their own pace with flexible schedule",
+        "avatarQuery": ""
+      },
+      {
+        "title": "9 out of 10 People Actually Finish",
+        "description": "This isn't a gamble, it's a proven system. The combination of unlocking virtual postcards, discovering secret quests, and earning a medal simply works.",
+        "image": "/assets/multi/reason3.png",
+        "imageQuery": "celebration of completion with virtual postcards and achievement milestones",
+        "avatarQuery": ""
+      },
+      {
+        "title": "It Turns Vague Goals into a Real Mission",
+        "description": "\"Getting fit\" is a dream. \"Completing the 56-mile Van Gogh challenge\" is a concrete mission. You know exactly what to do and the reward you'll get for doing it.",
+        "image": "/assets/multi/reason6.webp",
+        "imageQuery": "app showing clear Van Gogh challenge route with specific distance and milestones",
+        "avatarQuery": ""
+      },
+      {
+        "title": "You're Not Just Helping Yourself, You're Helping the Planet",
+        "description": "With every challenge, you help plant trees and remove plastic from the ocean. It's a powerful reminder that your journey is bigger than just you, it's helping make the world a better place.",
+        "image": "/assets/multi/reason7.webp",
+        "imageQuery": "visualization showing trees being planted and ocean plastic bottles being removed",
+        "avatarQuery": ""
+      },
+      {
+        "title": "You Get a Community That Actually Gets It",
+        "description": "You get access to our private community, a place that's 100% supportive, no matter how slow you're going. It's the first time many of our members have felt like they truly belong in a fitness community.",
+        "imageQuery": "friendly supportive online community feed showing people cheering each other on",
+        "avatarQuery": ""
+      }
+    ]
+  },
+  "multi-conversion": {
+    "showCountdown": true,
+    "countdownText": "Virtual Challenges completed in the last",
+    "subtitle": "Start Today Because Waiting Only Makes It Harder to Begin",
+    "benefits": [
+      {
+        "title": "100+ thrilling adventures to choose from in the app",
+        "description": "Select your favorite and do it at your own pace."
+      },
+      {
+        "title": "A premium finisher medal dispatched",
+        "description": "It serves as a tangible reward and a source of pride."
+      },
+      {
+        "title": "Experience a constant sense of achievement",
+        "description": "Enabled by the app's tracking and milestones system."
+      },
+      {
+        "title": "Real Support From 450k Private Community",
+        "description": "All sharing their progress and cheering each other on."
+      },
+      {
+        "title": "Finish Guarantee",
+        "description": "Designed to be finished, 9 of 10 finish it"
+      }
+    ],
+    "trustBadges": [
+      {
+        "icon": "Lock",
+        "text": "Secure Checkout"
+      },
+      {
+        "icon": "CheckCircle2",
+        "text": "100% Satisfaction"
+      },
+      {
+        "icon": "Shield",
+        "text": "Privacy Protected"
+      }
+    ],
+    "ratings": [
+      {
+        "score": "4.9",
+        "source": "Trustpilot"
+      },
+      {
+        "score": "4.8",
+        "source": "App Store"
+      }
+    ],
+    "testimonials": [
+      {
+        "quote": "This has been the most motivating thing I've ever seen for getting myself up off the couch and being active!",
+        "author": "Melissa Clark",
+        "image": "/assets/o1/testimonial-1.jpg",
+        "rating": 5
+      },
+      {
+        "quote": "I have never been very good at exercising, I like the idea more than the practice! But it wouldn't be overstating the case to say that the Conqueror Challenges have completely changed my whole outlook on things.",
+        "author": "Tony Peterson",
+        "image": "/assets/o1/testimonial-2.jpg",
+        "rating": 5
+      },
+      {
+        "quote": "I started my journey in Sept 2021 with the Ring of Kerry Ring Challenge. Every day I do my best to get myself out of my chair and it's so worth it. Every day I have found a new route to walk.",
+        "author": "Magdalena Nel",
+        "image": "/assets/o1/testimonial-3.jpg",
+        "rating": 5
+      }
+    ],
+    "howItWorks": [
+      {
+        "step": 1,
+        "description": "Purchase the entry"
+      },
+      {
+        "step": 2,
+        "description": "Download The Conqueror app"
+      },
+      {
+        "step": 3,
+        "description": "Check email and enter the code"
+      },
+      {
+        "step": 4,
+        "description": "Choose the challenge and start your journey"
+      }
+    ],
+    "buttonText": "Sign Up Now",
+    "buttonUrl": "https://theconqueror.events"
+  },
+  "multi-footer": {
+    "copyright": "® Actionary Limited - All Rights Reserved"
+  }
+}
+

@@ -1,0 +1,25 @@
+{
+  "components": {
+    "multi-header": {
+      "show": true,
+      "order": 1
+    },
+    "multi-hero": {
+      "show": true,
+      "order": 2
+    },
+    "multi-reasons": {
+      "show": true,
+      "order": 3
+    },
+    "multi-conversion": {
+      "show": true,
+      "order": 4
+    },
+    "multi-footer": {
+      "show": true,
+      "order": 5
+    }
+  }
+}
+

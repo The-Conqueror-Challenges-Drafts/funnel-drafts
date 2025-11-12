@@ -1,0 +1,89 @@
+{
+  "bf-press-article": {
+    "header": {
+      "releaseText": "FOR IMMEDIATE RELEASE",
+      "dateFormat": "en-NZ"
+    },
+    "hero": {
+      "headline": "NZ's Fastest-Growing Fitness Company Scraps Black Friday Sale for a Massive Public Experiment",
+      "subheadline": "They claim to have discovered the \"ultimate hack\" to guarantee 2026 fitness goals, and they're risking 50% of their Black Friday revenue to prove it."
+    },
+    "opening": {
+      "paragraphs": [
+        "For most people, the first of January is a ritual of failed ambition. Gyms are packed for two weeks, and empty by February. We promise ourselves \"this is the year,\" only to be derailed by the pressure, the crowds, and the jarring return to work.",
+        "But what if the problem isn't the resolution, but the <em>start date</em>?",
+        "This is the question at the heart of a massive experiment being launched by <strong class=\"text-emerald-700\">The Conqueror</strong>, New Zealand's fastest-growing digital fitness company."
+      ]
+    },
+    "discovery": {
+      "title": "The \"December Momentum\" Discovery",
+      "intro": "For the past year, The Conqueror's data team has been analyzing the behavior of over 500,000 users. Their findings are unprecedented.",
+      "highlightBox": {
+        "text": "They found that individuals who start a new fitness challenge in December—just one month before the New Year—are seven times more likely to achieve their long-term fitness goals.",
+        "highlightText": "seven times more likely"
+      },
+      "introAfterHighlight": "The data is stark:",
+      "bulletPoints": [
+        {
+          "icon": "CheckCircle2",
+          "text": "While most who start on January 1st quit within 14 days, <strong>87% of the \"December Starters\" actually finished their challenge</strong> before the New Year even began."
+        },
+        {
+          "icon": "CheckCircle2",
+          "text": "Even more staggering, <strong>75% of that December group were still active and engaged seven months later.</strong>"
+        }
+      ],
+      "theoryBox": {
+        "title": "Momentum Compounding.",
+        "text": "A spokesperson for the company explained that December starters aren't motivated by a \"new-me\" fantasy. They're building a realistic habit <em>before</em> the pressure hits. They establish a routine, finish a challenge, and enter the New Year with a win and a feeling of accomplishment, not a cold start."
+      }
+    },
+    "experiment": {
+      "title": "The Black Friday Experiment",
+      "paragraphs": [
+        "So, for their first-ever Black Friday, The Conqueror is doing the unthinkable: they're skipping the traditional sale.",
+        "Instead, they are running the largest fitness experiment in the industry to prove their theory. They are <strong class=\"text-emerald-700\">subsidizing a 50% discount</strong> for a limited number of new users willing to join the \"December Experiment\" and start a virtual challenge in the next 7 days."
+      ],
+      "highlightBox": "They are, in effect, \"losing\" 50% of their Black Friday revenue to prove that a December start is the single biggest key to success."
+    },
+    "urgency": {
+      "title": "97% of Spots Already Claimed",
+      "intro": "This is not a public sales offer. The \"Conqueror December Experiment\" is limited to a set number of participants to ensure data integrity.",
+      "alertBox": {
+        "text": "As of this morning, 97% of the spots have already been claimed by their internal community.",
+        "highlightText": "97% of the spots have already been claimed",
+        "subtext": "Registration for the experiment is scheduled to close today."
+      },
+      "closingParagraphs": [
+        "If you have failed to achieve your fitness goals year after year, this may be your single best chance to break the cycle.",
+        "Check the availability for the remaining spots below."
+      ]
+    },
+    "form": {
+      "title": "The Conqueror December Experiment",
+      "subtitle": "Registration Closes Today",
+      "subtext": "Check for an available spot below.",
+      "stats": [
+        {
+          "icon": "Users",
+          "value": "500K+",
+          "label": "Users Analyzed"
+        },
+        {
+          "icon": "TrendingUp",
+          "value": "7x",
+          "label": "Better Results"
+        },
+        {
+          "icon": "AlertCircle",
+          "value": "3%",
+          "label": "Spots Remaining",
+          "color": "red"
+        }
+      ],
+      "buttonText": "CHECK AVAILABILITY NOW",
+      "disclaimer": "If spots are available, you will be redirected to a private registration page to claim your 50% subsidized entry. This offer is not available anywhere else."
+    }
+  }
+}
+

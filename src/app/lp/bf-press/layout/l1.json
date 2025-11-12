@@ -1,0 +1,9 @@
+{
+  "components": {
+    "bf-press-article": {
+      "show": true,
+      "order": 1
+    }
+  }
+}
+

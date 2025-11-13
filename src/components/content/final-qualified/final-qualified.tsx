@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+import { motion } from "motion/react"
 
 interface MedalImage {
   image: string;
@@ -62,7 +63,7 @@ export default function FinalQualified({
   qualification = {}
 }: FinalQualifiedProps) {
   const [userName, setUserName] = useState<string | null>(null)
-  const [timeLeft, setTimeLeft] = useState(334) // 5 minutes 34 seconds in seconds
+  const [fundProgress, setFundProgress] = useState(3) // 3% remaining
 
   useEffect(() => {
     // Get name from sessionStorage
@@ -73,22 +74,6 @@ export default function FinalQualified({
       }
     }
   }, [])
-
-  useEffect(() => {
-    // Countdown timer
-    if (timeLeft > 0) {
-      const timer = setInterval(() => {
-        setTimeLeft((prev) => Math.max(0, prev - 1))
-      }, 1000)
-      return () => clearInterval(timer)
-    }
-  }, [timeLeft])
-
-  const formatTime = (seconds: number): string => {
-    const minutes = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${minutes}:${secs.toString().padStart(2, '0')} min`
-  }
 
   const handleCtaClick = () => {
     if (cta.buttonUrl) {
@@ -118,11 +103,34 @@ export default function FinalQualified({
         </div>
         
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 relative z-10">
-          {/* Countdown Timer */}
-          <div className="text-center mb-6">
-            <div className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full text-base font-bold shadow-lg animate-pulse">
-              <span>⏰</span>
-              <span>Subsidize ending in: {formatTime(timeLeft)}</span>
+          {/* Subsidy Fund Progress Bar */}
+          <div className="mb-6 bg-white rounded-lg p-4 shadow-lg border-2 border-red-200">
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">💰</span>
+                <span className="text-sm font-semibold text-gray-900">
+                  Subsidise experiment fund is almost empty
+                </span>
+              </div>
+              <span className="text-sm font-bold text-red-600">
+                {fundProgress}% remaining
+              </span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+              <motion.div
+                className="bg-gradient-to-r from-red-500 to-red-600 h-4 rounded-full flex items-center justify-end pr-2"
+                initial={{ width: 0 }}
+                animate={{ width: `${100 - fundProgress}%` }}
+                transition={{ duration: 1, ease: "easeOut" }}
+              >
+                <span className="text-xs font-bold text-white">
+                  {100 - fundProgress}% used
+                </span>
+              </motion.div>
+            </div>
+            <div className="mt-2 flex justify-between text-xs text-gray-600">
+              <span>Fund Status</span>
+              <span className="text-red-600 font-semibold">Critical</span>
             </div>
           </div>
 

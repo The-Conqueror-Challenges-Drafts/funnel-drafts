@@ -62,6 +62,7 @@ export default function FinalQualified({
   qualification = {}
 }: FinalQualifiedProps) {
   const [userName, setUserName] = useState<string | null>(null)
+  const [timeLeft, setTimeLeft] = useState(334) // 5 minutes 34 seconds in seconds
 
   useEffect(() => {
     // Get name from sessionStorage
@@ -72,6 +73,22 @@ export default function FinalQualified({
       }
     }
   }, [])
+
+  useEffect(() => {
+    // Countdown timer
+    if (timeLeft > 0) {
+      const timer = setInterval(() => {
+        setTimeLeft((prev) => Math.max(0, prev - 1))
+      }, 1000)
+      return () => clearInterval(timer)
+    }
+  }, [timeLeft])
+
+  const formatTime = (seconds: number): string => {
+    const minutes = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${minutes}:${secs.toString().padStart(2, '0')} min`
+  }
 
   const handleCtaClick = () => {
     if (cta.buttonUrl) {
@@ -101,15 +118,13 @@ export default function FinalQualified({
         </div>
         
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 relative z-10">
-          {/* Qualification Badge */}
-          {qualification.badge && (
-            <div className="text-center mb-6">
-              <div className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">
-                <span>🏆</span>
-                <span>{qualification.badge}</span>
-              </div>
+          {/* Countdown Timer */}
+          <div className="text-center mb-6">
+            <div className="inline-flex items-center gap-2 bg-red-600 text-white px-6 py-3 rounded-full text-base font-bold shadow-lg animate-pulse">
+              <span>⏰</span>
+              <span>Subsidize ending in: {formatTime(timeLeft)}</span>
             </div>
-          )}
+          </div>
 
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">

@@ -77,6 +77,11 @@ interface BfPressArticleProps {
     buttonText?: string;
     buttonUrl?: string;
   };
+  author?: {
+    name?: string;
+    title?: string;
+    publication?: string;
+  };
 }
 
 export default function BfPressArticle({
@@ -87,7 +92,8 @@ export default function BfPressArticle({
   experiment = {},
   urgency = {},
   form = {},
-  quizBanner = {}
+  quizBanner = {},
+  author = {}
 }: BfPressArticleProps) {
   const [firstName, setFirstName] = useState("")
   const [email, setEmail] = useState("")
@@ -177,24 +183,23 @@ export default function BfPressArticle({
         </section>
       )}
 
-      {/* Quiz Banner */}
-      {quizBanner.text && (
-        <section className="bg-red-600 text-white py-6 border-b border-red-700">
-          <div className="mx-auto max-w-4xl px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-lg md:text-xl font-semibold text-center md:text-left">
-                {quizBanner.text}
-              </p>
-              {quizBanner.buttonText && (
-                <Button
-                  onClick={() => {
-                    window.location.href = quizBanner.buttonUrl || '/lp/qualification-quiz'
-                  }}
-                  className="bg-white text-red-600 hover:bg-gray-100 font-bold px-8 py-6 text-lg shadow-lg"
-                >
-                  {quizBanner.buttonText}
-                </Button>
-              )}
+      {/* Author Section */}
+      {author.name && (
+        <section className="border-b border-gray-200 bg-white py-4">
+          <div className="mx-auto max-w-3xl px-4">
+            <div className="flex items-center gap-4">
+              <div className="flex-1">
+                <p className="text-sm font-semibold text-gray-900">{author.name}</p>
+                {author.title && (
+                  <p className="text-xs text-gray-600">{author.title}</p>
+                )}
+                {author.publication && (
+                  <p className="text-xs text-gray-500 italic">{author.publication}</p>
+                )}
+              </div>
+              <div className="text-xs text-gray-500">
+                {formatDate(header.dateFormat)}
+              </div>
             </div>
           </div>
         </section>

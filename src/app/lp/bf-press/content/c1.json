@@ -59,10 +59,10 @@
         "Check the availability for the remaining spots below."
       ]
     },
-    "quizBanner": {
-      "text": "",
-      "buttonText": "Take the Quiz",
-      "buttonUrl": "/lp/qualification-quiz"
+    "author": {
+      "name": "Sarah Mitchell",
+      "title": "Health & Fitness Correspondent",
+      "publication": "New Zealand Health Journal"
     },
     "form": {
       "title": "The Conqueror December Experiment",

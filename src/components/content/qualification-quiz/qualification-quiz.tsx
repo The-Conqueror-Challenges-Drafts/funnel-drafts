@@ -2,16 +2,19 @@
 
 import React, { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
+import { Button } from "@/components/ui/button"
 
 interface Question {
   id: number;
   question: string;
-  options: Array<{
+  type?: 'multiple-choice' | 'text';
+  options?: Array<{
     text: string;
     value: string;
     personalityTrait: string; // Cambridge Analytica style profiling
   }>;
   category: string; // motivation, commitment, personality, etc.
+  placeholder?: string;
 }
 
 interface QualificationQuizProps {
@@ -23,6 +26,7 @@ const defaultQuestions: Question[] = [
   {
     id: 1,
     question: "When you think about achieving your fitness goals, what motivates you most?",
+    type: "multiple-choice",
     category: "motivation",
     options: [
       { text: "Proving to myself I can do it", value: "internal", personalityTrait: "self-driven" },
@@ -34,6 +38,7 @@ const defaultQuestions: Question[] = [
   {
     id: 2,
     question: "How do you typically approach new commitments?",
+    type: "multiple-choice",
     category: "commitment",
     options: [
       { text: "I research thoroughly before committing", value: "analytical", personalityTrait: "thinker" },
@@ -45,6 +50,7 @@ const defaultQuestions: Question[] = [
   {
     id: 3,
     question: "What's your biggest fear when starting a fitness program?",
+    type: "multiple-choice",
     category: "barriers",
     options: [
       { text: "Not having enough time", value: "time", personalityTrait: "busy-professional" },
@@ -55,7 +61,34 @@ const defaultQuestions: Question[] = [
   },
   {
     id: 4,
+    question: "What has been holding you back from achieving your fitness goals?",
+    type: "multiple-choice",
+    category: "barriers",
+    options: [
+      { text: "Lack of time due to work/family commitments", value: "time-constraints", personalityTrait: "time-pressed" },
+      { text: "Lack of motivation or willpower", value: "motivation-lack", personalityTrait: "motivation-seeker" },
+      { text: "Not knowing where to start", value: "direction", personalityTrait: "guidance-needer" },
+      { text: "Previous failures making me doubt myself", value: "self-doubt", personalityTrait: "confidence-builder" },
+      { text: "Lack of accountability or support", value: "accountability", personalityTrait: "support-seeker" }
+    ]
+  },
+  {
+    id: 5,
+    question: "What is your primary fitness objective for 2026?",
+    type: "multiple-choice",
+    category: "objectives",
+    options: [
+      { text: "Lose weight and improve body composition", value: "weight-loss", personalityTrait: "transformation-seeker" },
+      { text: "Build strength and muscle", value: "strength", personalityTrait: "power-builder" },
+      { text: "Improve cardiovascular health and endurance", value: "cardio", personalityTrait: "endurance-focused" },
+      { text: "Establish a consistent exercise habit", value: "habit-formation", personalityTrait: "routine-builder" },
+      { text: "Complete a specific challenge or event", value: "event-goal", personalityTrait: "goal-oriented" }
+    ]
+  },
+  {
+    id: 6,
     question: "When you achieve something difficult, how do you celebrate?",
+    type: "multiple-choice",
     category: "personality",
     options: [
       { text: "I share it with friends and family", value: "social", personalityTrait: "social-sharer" },
@@ -65,8 +98,9 @@ const defaultQuestions: Question[] = [
     ]
   },
   {
-    id: 5,
+    id: 7,
     question: "What makes you feel most accomplished?",
+    type: "multiple-choice",
     category: "values",
     options: [
       { text: "Completing something others find difficult", value: "excellence", personalityTrait: "excellence-seeker" },
@@ -74,6 +108,13 @@ const defaultQuestions: Question[] = [
       { text: "Breaking my own personal records", value: "personal-growth", personalityTrait: "growth-oriented" },
       { text: "Being recognized for my achievements", value: "recognition", personalityTrait: "recognition-seeker" }
     ]
+  },
+  {
+    id: 8,
+    question: "Is there anything else you'd like to share about your fitness journey or goals?",
+    type: "text",
+    category: "additional",
+    placeholder: "Tell us anything we didn't cover that you think is important..."
   }
 ];
 
@@ -85,14 +126,16 @@ export default function QualificationQuiz({
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [personalityTraits, setPersonalityTraits] = useState<string[]>([]);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [textAnswer, setTextAnswer] = useState("");
 
-  const handleAnswer = (value: string, trait: string) => {
+  const handleAnswer = (value: string, trait?: string) => {
     const question = questions[currentQuestion];
     const newAnswers = { ...answers, [question.id]: value };
-    const newTraits = [...personalityTraits, trait];
+    const newTraits = trait ? [...personalityTraits, trait] : personalityTraits;
     
     setAnswers(newAnswers);
     setPersonalityTraits(newTraits);
+    setTextAnswer(""); // Reset text input
 
     // Create sense of progress and commitment
     if (currentQuestion < questions.length - 1) {
@@ -112,6 +155,12 @@ export default function QualificationQuiz({
           window.location.href = '/lp/qualification-transition';
         }
       }, 500);
+    }
+  };
+
+  const handleTextSubmit = () => {
+    if (textAnswer.trim()) {
+      handleAnswer(textAnswer.trim());
     }
   };
 
@@ -151,6 +200,13 @@ export default function QualificationQuiz({
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
       <div className="mx-auto max-w-3xl px-4 py-12">
+        {/* Urgency Banner */}
+        <div className="bg-red-600 text-white rounded-lg p-4 mb-6 text-center">
+          <p className="text-lg font-semibold">
+            ⚡ Hurry to complete the application form and reserve your spot
+          </p>
+        </div>
+
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
@@ -190,31 +246,50 @@ export default function QualificationQuiz({
               </h2>
             </div>
 
-            <div className="space-y-4">
-              {question.options.map((option, index) => (
-                <motion.button
-                  key={index}
-                  onClick={() => handleAnswer(option.value, option.personalityTrait)}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full text-left p-6 rounded-xl border-2 border-gray-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-200 group"
+            {question.type === 'text' ? (
+              <div className="space-y-4">
+                <textarea
+                  value={textAnswer}
+                  onChange={(e) => setTextAnswer(e.target.value)}
+                  placeholder={question.placeholder || "Type your answer here..."}
+                  className="w-full min-h-[150px] p-4 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:outline-none text-lg text-gray-700 resize-y"
+                  rows={5}
+                />
+                <Button
+                  onClick={handleTextSubmit}
+                  disabled={!textAnswer.trim()}
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-lg py-6 font-bold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg text-gray-700 group-hover:text-emerald-700 font-medium">
-                      {option.text}
-                    </span>
-                    <svg 
-                      className="w-6 h-6 text-gray-400 group-hover:text-emerald-600 transition-colors" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </div>
-                </motion.button>
-              ))}
-            </div>
+                  Continue →
+                </Button>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {question.options?.map((option, index) => (
+                  <motion.button
+                    key={index}
+                    onClick={() => handleAnswer(option.value, option.personalityTrait)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full text-left p-6 rounded-xl border-2 border-gray-200 hover:border-emerald-500 hover:bg-emerald-50 transition-all duration-200 group"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-lg text-gray-700 group-hover:text-emerald-700 font-medium">
+                        {option.text}
+                      </span>
+                      <svg 
+                        className="w-6 h-6 text-gray-400 group-hover:text-emerald-600 transition-colors" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </motion.button>
+                ))}
+              </div>
+            )}
           </motion.div>
         </AnimatePresence>
 

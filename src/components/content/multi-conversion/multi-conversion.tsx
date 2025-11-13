@@ -110,10 +110,14 @@ export default function MultiConversion({
     e.preventDefault()
     setLoading(true)
     console.log("Submitting:", { name, email })
-    // Redirect to buttonUrl if provided
-    if (buttonUrl) {
-      window.location.href = buttonUrl
+    
+    // Store name in sessionStorage for personalization
+    if (name && typeof window !== 'undefined') {
+      sessionStorage.setItem('userName', name.trim())
     }
+    
+    // Redirect to bf-press-qualified page
+    window.location.href = '/lp/bf-press-qualified'
   }
 
   const getIcon = (iconName: string) => {
@@ -222,7 +226,7 @@ export default function MultiConversion({
               >
                 Check Availability →
               </Button>
-              <div className='text-primary text-md text-center mb-4'>
+              <div className='text-red-600 text-[16px] text-center mb-4'>
             <span className='font-semibold animate-pulse inline-flex items-center gap-1'>
               {isLoadingUserCount ? <Spinner className="w-4 h-4"/> : currentViewers} People
             </span> are Viewing this Challenge

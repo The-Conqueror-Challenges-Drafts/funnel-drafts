@@ -10,10 +10,11 @@ interface MedalImage {
   title?: string;
 }
 
-interface BfPressQualifiedProps {
+interface FinalQualifiedProps {
   header?: {
     title?: string;
     subheadline?: string;
+    profile?: string;
   };
   intro?: {
     paragraphs?: string[];
@@ -44,16 +45,22 @@ interface BfPressQualifiedProps {
     buttonText?: string;
     buttonUrl?: string;
   };
+  qualification?: {
+    badge?: string;
+    percentage?: string;
+    message?: string;
+  };
 }
 
-export default function BfPressQualified({
+export default function FinalQualified({
   header = {},
   intro = {},
   logic = {},
   mission = {},
   challenge = {},
-  cta = {}
-}: BfPressQualifiedProps) {
+  cta = {},
+  qualification = {}
+}: FinalQualifiedProps) {
   const [userName, setUserName] = useState<string | null>(null)
 
   useEffect(() => {
@@ -85,21 +92,60 @@ export default function BfPressQualified({
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header - Congratulations */}
-      <header className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-b border-emerald-200">
-        <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
+      {/* Header - Enhanced with Qualification Badge */}
+      <header className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-b border-emerald-200 relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-600 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-emerald-500 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 relative z-10">
+          {/* Qualification Badge */}
+          {qualification.badge && (
+            <div className="text-center mb-6">
+              <div className="inline-flex items-center gap-2 bg-emerald-600 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-lg">
+                <span>🏆</span>
+                <span>{qualification.badge}</span>
+              </div>
+            </div>
+          )}
+
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
               {getPersonalizedTitle()}
             </h1>
+            
+            {qualification.percentage && (
+              <p className="text-lg text-emerald-700 font-semibold mb-4">
+                You're among the top {qualification.percentage}% selected
+              </p>
+            )}
+            
             {header.subheadline && (
               <p className="text-xl md:text-2xl text-gray-700 font-medium mt-6 leading-relaxed">
                 {header.subheadline}
               </p>
             )}
+
+            {header.profile && (
+              <div className="mt-6 inline-block bg-white/80 backdrop-blur-sm px-6 py-3 rounded-lg border border-emerald-200">
+                <p className="text-sm text-gray-600">Your Profile:</p>
+                <p className="text-lg font-semibold text-emerald-700">{header.profile}</p>
+              </div>
+            )}
           </div>
         </div>
       </header>
+
+      {/* Qualification Message */}
+      {qualification.message && (
+        <div className="bg-emerald-600 text-white py-6">
+          <div className="mx-auto max-w-3xl px-4 text-center">
+            <p className="text-lg font-medium">{qualification.message}</p>
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <article className="mx-auto max-w-3xl px-4 py-12">

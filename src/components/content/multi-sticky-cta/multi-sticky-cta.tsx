@@ -41,6 +41,9 @@ export default function MultiStickyCta({ buttonText, lowStockText }: MultiSticky
     const formSection = document.getElementById('conversion-form')
     if (formSection) {
       formSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    } else {
+      // If form not found, redirect to qualified page
+      window.location.href = '/lp/bf-press-qualified'
     }
   }
 
@@ -73,4 +76,5 @@ export default function MultiStickyCta({ buttonText, lowStockText }: MultiSticky
     </AnimatePresence>
   )
 }
+
 

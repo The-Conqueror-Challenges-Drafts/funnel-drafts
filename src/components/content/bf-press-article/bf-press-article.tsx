@@ -86,12 +86,14 @@ export default function BfPressArticle({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    if (form.buttonUrl) {
-      window.location.href = form.buttonUrl
-    } else {
-      console.log("[bf-press] Form submitted:", { firstName, email })
+    
+    // Store name in sessionStorage for personalization
+    if (firstName && typeof window !== 'undefined') {
+      sessionStorage.setItem('userName', firstName.trim())
     }
+    
+    // Redirect to bf-press-qualified page
+    window.location.href = '/lp/bf-press-qualified'
   }
 
   const getIcon = (iconName: string) => {

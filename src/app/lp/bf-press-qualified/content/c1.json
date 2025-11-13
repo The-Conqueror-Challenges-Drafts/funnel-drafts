@@ -1,0 +1,79 @@
+{
+  "bf-press-qualified": {
+    "header": {
+      "title": "Congratulations. You've Been Qualified.",
+      "subheadline": "Your spot in the December Head Start Experiment is reserved."
+    },
+    "intro": {
+      "paragraphs": [
+        "You are one of a limited number of people invited to prove our most important discovery: that a December start is the single biggest hack to achieving your 2026 fitness goals."
+      ]
+    },
+    "logic": {
+      "title": "The Logic Is Simple",
+      "paragraphs": [
+        "Our data is clear. The \"all or nothing\" pressure of a New Year's Day resolution often fails.",
+        "The secret is momentum."
+      ],
+      "highlightBox": {
+        "text": "By starting now, you enter the New Year with a win. That simple shift is why our December users have an astonishing 91% completion rate.",
+        "highlightText": "91% completion rate"
+      },
+      "closingParagraph": "You are here because you're ready to be part of that 91%."
+    },
+    "mission": {
+      "title": "Your Mission: The 3 Simple Steps",
+      "intro": "Your place in the experiment is subsidized by our Black Friday fund. Here's how to claim it:",
+      "steps": [
+        {
+          "number": 1,
+          "text": "Claim your 50% subsidized entry today."
+        },
+        {
+          "number": 2,
+          "text": "Choose your first virtual challenge in The Conqueror app after sign up"
+        },
+        
+        {
+          "number": 3,
+          "text": "Start this challenge by December 7th."
+        }
+      ]
+    },
+    "challenge": {
+      "title": "Where Will Your First Challenge Take You?",
+      "paragraphs": [
+        "Your 50% subsidy applies to any of the 100+ Conqueror original adventures in the app.",
+        "Every mile you log in the real world (walking, running, cycling, or swimming) moves you along the virtual map. When you cross the finish line, your medal is shipped.",
+        "Will you hike the Inca Trail? Run the length of Route 66? Or walk the Great Wall of China?"
+      ],
+      "medals": [
+        {
+          "image": "/assets/shared/trust1.webp",
+          "alt": "Conqueror Challenge Medal 1",
+          "title": "Inca Trail"
+        },
+        {
+          "image": "/assets/shared/trust2.webp",
+          "alt": "Conqueror Challenge Medal 2",
+          "title": "Route 66"
+        },
+        {
+          "image": "/assets/shared/trust3.webp",
+          "alt": "Conqueror Challenge Medal 3",
+          "title": "Great Wall of China"
+        },
+        {
+          "image": "/assets/shared/trust4.webp",
+          "alt": "Conqueror Challenge Medal 4",
+          "title": "Choose Your Adventure"
+        }
+      ]
+    },
+    "cta": {
+      "buttonText": "Claim Your 50% Subsidized Entry",
+      "buttonUrl": ""
+    }
+  }
+}
+

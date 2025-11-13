@@ -445,7 +445,7 @@ export default function BfPressArticle({
                 </div>
 
                 {form.disclaimer && (
-                  <p className="text-sm text-gray-600 text-center leading-relaxed mt-4">
+                  <p className="text-sm text-red-600 text-center leading-relaxed mt-4 font-semibold">
                     <em dangerouslySetInnerHTML={{ __html: form.disclaimer }} />
                   </p>
                 )}

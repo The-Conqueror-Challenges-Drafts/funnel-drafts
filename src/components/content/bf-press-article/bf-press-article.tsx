@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { CheckCircle2, AlertCircle, TrendingUp, Users } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 interface StatItem {
   icon: string;
@@ -69,6 +69,13 @@ interface BfPressArticleProps {
     buttonText?: string;
     disclaimer?: string;
     buttonUrl?: string;
+    quizButtonText?: string;
+    quizButtonUrl?: string;
+  };
+  quizBanner?: {
+    text?: string;
+    buttonText?: string;
+    buttonUrl?: string;
   };
 }
 
@@ -79,10 +86,22 @@ export default function BfPressArticle({
   discovery = {},
   experiment = {},
   urgency = {},
-  form = {}
+  form = {},
+  quizBanner = {}
 }: BfPressArticleProps) {
   const [firstName, setFirstName] = useState("")
   const [email, setEmail] = useState("")
+  const [userName, setUserName] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Get name from sessionStorage for personalization
+    if (typeof window !== 'undefined') {
+      const name = sessionStorage.getItem('userName')
+      if (name) {
+        setUserName(name)
+      }
+    }
+  }, [])
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -134,18 +153,49 @@ export default function BfPressArticle({
         </div>
       </header>
 
-      {/* Hero Headline */}
+      {/* Hero Headline with Personalization */}
       {hero.headline && (
-        <section className="bg-white py-12 border-b border-gray-200">
+        <section className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-b border-emerald-200 py-12">
           <div className="mx-auto max-w-4xl px-4">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-balance leading-tight">
-              {hero.headline}
-            </h1>
-            {hero.subheadline && (
-              <p className="text-xl md:text-2xl text-gray-700 font-medium text-balance leading-relaxed">
-                {hero.subheadline}
+            <div className="text-center">
+              {userName ? (
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-balance leading-tight">
+                  {userName.split(' ')[0]}, {hero.headline}
+                </h1>
+              ) : (
+                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-balance leading-tight">
+                  {hero.headline}
+                </h1>
+              )}
+              {hero.subheadline && (
+                <p className="text-xl md:text-2xl text-gray-700 font-medium text-balance leading-relaxed">
+                  {hero.subheadline}
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Quiz Banner */}
+      {quizBanner.text && (
+        <section className="bg-red-600 text-white py-6 border-b border-red-700">
+          <div className="mx-auto max-w-4xl px-4">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <p className="text-lg md:text-xl font-semibold text-center md:text-left">
+                {quizBanner.text}
               </p>
-            )}
+              {quizBanner.buttonText && (
+                <Button
+                  onClick={() => {
+                    window.location.href = quizBanner.buttonUrl || '/lp/qualification-quiz'
+                  }}
+                  className="bg-white text-red-600 hover:bg-gray-100 font-bold px-8 py-6 text-lg shadow-lg"
+                >
+                  {quizBanner.buttonText}
+                </Button>
+              )}
+            </div>
           </div>
         </section>
       )}
@@ -365,16 +415,32 @@ export default function BfPressArticle({
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xl py-7 font-bold shadow-lg hover:shadow-xl transition-all"
-                >
-                  {form.buttonText || "CHECK AVAILABILITY NOW"}
-                </Button>
+                <div className="space-y-4">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-xl py-7 font-bold shadow-lg hover:shadow-xl transition-all"
+                  >
+                    {form.buttonText || "CHECK AVAILABILITY NOW"}
+                  </Button>
+
+                  {form.quizButtonText && (
+                    <Button
+                      type="button"
+                      onClick={() => {
+                        window.location.href = form.quizButtonUrl || '/lp/qualification-quiz'
+                      }}
+                      size="lg"
+                      variant="outline"
+                      className="w-full border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-xl py-7 font-bold shadow-md hover:shadow-lg transition-all"
+                    >
+                      {form.quizButtonText}
+                    </Button>
+                  )}
+                </div>
 
                 {form.disclaimer && (
-                  <p className="text-sm text-gray-600 text-center leading-relaxed">
+                  <p className="text-sm text-gray-600 text-center leading-relaxed mt-4">
                     <em dangerouslySetInnerHTML={{ __html: form.disclaimer }} />
                   </p>
                 )}

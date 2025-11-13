@@ -59,6 +59,11 @@
         "Check the availability for the remaining spots below."
       ]
     },
+    "quizBanner": {
+      "text": "Last few spots available, take the quiz and see if you qualify",
+      "buttonText": "Take the Quiz",
+      "buttonUrl": "/lp/qualification-quiz"
+    },
     "form": {
       "title": "The Conqueror December Experiment",
       "subtitle": "Registration Closes Today",
@@ -82,6 +87,8 @@
         }
       ],
       "buttonText": "CHECK AVAILABILITY NOW",
+      "quizButtonText": "Take the Qualification Quiz",
+      "quizButtonUrl": "/lp/qualification-quiz",
       "disclaimer": "If spots are available, you will be redirected to a private registration page to claim your 50% subsidized entry. This offer is not available anywhere else."
     }
   }

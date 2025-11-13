@@ -200,10 +200,10 @@ export default function QualificationQuiz({
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
       <div className="mx-auto max-w-3xl px-4 py-12">
-        {/* Urgency Banner */}
-        <div className="bg-red-600 text-white rounded-lg p-4 mb-6 text-center">
+        {/* Application Banner */}
+        <div className="bg-emerald-600 text-white rounded-lg p-4 mb-6 text-center">
           <p className="text-lg font-semibold">
-            ⚡ Hurry to complete the application form and reserve your spot
+            Complete the application form to reserve your spot
           </p>
         </div>
 
@@ -296,7 +296,7 @@ export default function QualificationQuiz({
         {/* Trust Indicators */}
         <div className="text-center text-sm text-gray-500">
           <p>🔒 Your responses are confidential and used only for qualification</p>
-          <p className="mt-2">✨ Only {Math.floor(Math.random() * 5 + 15)}% of applicants qualify</p>
+          <p className="mt-2">✨ 49739 registered in the last 7 days</p>
         </div>
       </div>
     </div>

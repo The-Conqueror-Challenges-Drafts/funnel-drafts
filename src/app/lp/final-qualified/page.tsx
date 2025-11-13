@@ -11,16 +11,21 @@ export default function Page() {
     // Get profile from sessionStorage and update content
     if (typeof window !== 'undefined') {
       const profile = sessionStorage.getItem('qualificationProfile');
-      if (profile && content['final-qualified']) {
-        setContent({
-          ...content,
-          'final-qualified': {
-            ...content['final-qualified'],
-            header: {
-              ...content['final-qualified'].header,
-              profile: profile
-            }
+      if (profile) {
+        setContent((prevContent) => {
+          if (prevContent['final-qualified']) {
+            return {
+              ...prevContent,
+              'final-qualified': {
+                ...prevContent['final-qualified'],
+                header: {
+                  ...prevContent['final-qualified'].header,
+                  profile: profile
+                }
+              }
+            };
           }
+          return prevContent;
         });
       }
     }

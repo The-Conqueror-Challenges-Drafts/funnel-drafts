@@ -145,7 +145,7 @@ export default function QualificationTransition({
               </h1>
               
               <p className="text-2xl text-emerald-600 font-semibold mb-2">
-                You've Been Qualified
+                You&apos;ve Been Qualified
               </p>
               
               <p className="text-lg text-gray-600 max-w-md mx-auto">

@@ -118,7 +118,7 @@ export default function FinalQualified({
             
             {qualification.percentage && (
               <p className="text-lg text-emerald-700 font-semibold mb-4">
-                You're among the top {qualification.percentage}% selected
+                You&apos;re among the top {qualification.percentage}% selected
               </p>
             )}
             

@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useState } from "react"
-import { Button } from "@/components/ui/button"
 import { motion, AnimatePresence } from "motion/react"
 
 interface Question {
@@ -118,18 +117,7 @@ export default function QualificationQuiz({
 
   const calculateProfile = (traits: string[]): string => {
     // Cambridge Analytica style: Create a "unique" profile based on answers
-    const traitCounts: Record<string, number> = {};
-    traits.forEach(trait => {
-      traitCounts[trait] = (traitCounts[trait] || 0) + 1;
-    });
-    
-    // Determine primary personality archetype
-    const topTraits = Object.entries(traitCounts)
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, 3)
-      .map(([trait]) => trait);
-    
-    // Create a compelling profile name
+    // Create a compelling profile name based on traits
     const profiles = [
       "The Determined Achiever",
       "The Social Connector",

@@ -2,8 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { CheckCircle2, MapPin, Award, Calendar } from "lucide-react"
+import Image from "next/image"
 
 interface MedalImage {
   image: string;
@@ -26,6 +25,7 @@ interface BfPressQualifiedProps {
       text?: string;
       highlightText?: string;
     };
+    closingParagraph?: string;
   };
   mission?: {
     title?: string;
@@ -122,9 +122,9 @@ export default function BfPressQualified({
                 </div>
               )}
 
-              {(logic as any).closingParagraph && (
+              {logic.closingParagraph && (
                 <p className="text-lg text-gray-700 leading-relaxed mt-6 font-medium">
-                  {(logic as any).closingParagraph}
+                  {logic.closingParagraph}
                 </p>
               )}
             </div>
@@ -176,11 +176,12 @@ export default function BfPressQualified({
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
                   {challenge.medals.map((medal, index) => (
                     <div key={index} className="group cursor-pointer">
-                      <div className="aspect-square overflow-hidden rounded-lg bg-gray-100 border-2 border-gray-200 hover:border-emerald-500 transition-all">
-                        <img 
+                      <div className="aspect-square overflow-hidden rounded-lg bg-gray-100 border-2 border-gray-200 hover:border-emerald-500 transition-all relative">
+                        <Image 
                           src={medal.image} 
                           alt={medal.alt}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
                         />
                       </div>
                       {medal.title && (

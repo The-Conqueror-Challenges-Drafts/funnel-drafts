@@ -60,7 +60,7 @@
       ]
     },
     "quizBanner": {
-      "text": "Last few spots available, take the quiz and see if you qualify",
+      "text": "",
       "buttonText": "Take the Quiz",
       "buttonUrl": "/lp/qualification-quiz"
     },

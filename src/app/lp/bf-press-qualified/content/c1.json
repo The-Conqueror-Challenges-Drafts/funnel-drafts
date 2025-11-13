@@ -71,8 +71,12 @@
       ]
     },
     "cta": {
-      "buttonText": "Claim Your 50% Subsidized Entry",
-      "buttonUrl": ""
+      "buttonText": "Check Availability - config",
+      "buttonUrl": "",
+      "secondaryButtonText": "",
+      "secondaryButtonUrl": "",
+      "declineText": "No thanks, I already achieved my fitness goals in 2025",
+      "declineUrl": ""
     }
   }
 }

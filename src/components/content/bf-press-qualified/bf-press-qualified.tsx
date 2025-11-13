@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 
 interface MedalImage {
   image: string;
@@ -43,6 +42,10 @@ interface BfPressQualifiedProps {
   cta?: {
     buttonText?: string;
     buttonUrl?: string;
+    secondaryButtonText?: string;
+    secondaryButtonUrl?: string;
+    declineText?: string;
+    declineUrl?: string;
   };
 }
 
@@ -194,39 +197,13 @@ export default function BfPressQualified({
                 />
               ))}
 
-              {/* Medal Images Grid */}
-              {challenge.medals && challenge.medals.length > 0 && (
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 my-12">
-                  {challenge.medals.map((medal, index) => (
-                    <div key={index} className="group cursor-pointer">
-                      <div className="aspect-square overflow-hidden rounded-lg bg-gray-100 border-2 border-gray-200 hover:border-emerald-500 transition-all relative">
-                        <Image 
-                          src={medal.image} 
-                          alt={medal.alt}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      {medal.title && (
-                        <p className="text-center text-gray-700 font-medium mt-3">
-                          {medal.title}
-                        </p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <p className="text-lg text-gray-700 leading-relaxed mt-8 font-medium text-center">
-                The choice is yours.
-              </p>
             </div>
           )}
         </div>
 
-        {/* CTA Button */}
-        {cta.buttonText && (
-          <div className="my-16 text-center">
+        {/* CTA Buttons */}
+        <div className="my-16 text-center space-y-4">
+          {cta.buttonText && (
             <Button
               onClick={handleCtaClick}
               size="lg"
@@ -234,8 +211,40 @@ export default function BfPressQualified({
             >
               {cta.buttonText}
             </Button>
-          </div>
-        )}
+          )}
+          
+          {cta.secondaryButtonText && (
+            <div>
+              <Button
+                onClick={() => {
+                  if (cta.secondaryButtonUrl) {
+                    window.location.href = cta.secondaryButtonUrl
+                  }
+                }}
+                size="lg"
+                variant="outline"
+                className="text-xl py-7 px-12 font-bold border-2 border-gray-300 hover:border-gray-400 transition-all"
+              >
+                {cta.secondaryButtonText}
+              </Button>
+            </div>
+          )}
+
+          {cta.declineText && (
+            <div className="pt-4">
+              <button
+                onClick={() => {
+                  if (cta.declineUrl) {
+                    window.location.href = cta.declineUrl
+                  }
+                }}
+                className="text-gray-600 underline hover:text-gray-800 transition-colors text-base"
+              >
+                {cta.declineText}
+              </button>
+            </div>
+          )}
+        </div>
       </article>
 
       {/* Footer */}

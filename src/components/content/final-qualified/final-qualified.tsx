@@ -45,6 +45,8 @@ interface FinalQualifiedProps {
   cta?: {
     buttonText?: string;
     buttonUrl?: string;
+    declineText?: string;
+    declineUrl?: string;
   };
   qualification?: {
     badge?: string;
@@ -295,7 +297,7 @@ export default function FinalQualified({
 
         {/* CTA Button */}
         {cta.buttonText && (
-          <div className="my-8 md:my-16 text-center">
+          <div className="my-8 md:my-16 text-center space-y-4">
             <Button
               onClick={handleCtaClick}
               size="lg"
@@ -303,6 +305,21 @@ export default function FinalQualified({
             >
               {cta.buttonText}
             </Button>
+            
+            {cta.declineText && (
+              <div className="pt-2">
+                <button
+                  onClick={() => {
+                    if (cta.declineUrl) {
+                      window.location.href = cta.declineUrl
+                    }
+                  }}
+                  className="text-gray-600 underline hover:text-gray-800 transition-colors text-sm md:text-base"
+                >
+                  {cta.declineText}
+                </button>
+              </div>
+            )}
           </div>
         )}
       </article>

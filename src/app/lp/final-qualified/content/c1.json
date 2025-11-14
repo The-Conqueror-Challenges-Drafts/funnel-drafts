@@ -56,7 +56,9 @@
     },
     "cta": {
       "buttonText": "Claim Your 50% Subsidized Entry",
-      "buttonUrl": ""
+      "buttonUrl": "",
+      "declineText": "No thanks, I already achieved my fitness goals in 2025",
+      "declineUrl": ""
     }
   }
 }

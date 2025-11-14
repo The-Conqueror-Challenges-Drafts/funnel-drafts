@@ -86,8 +86,8 @@
           "color": "red"
         }
       ],
-      "buttonText": "CHECK AVAILABILITY NOW",
-      "quizButtonText": "Take the Qualification Quiz",
+      "buttonText": "Check Availability - config",
+      "quizButtonText": "Check Availability - quiz",
       "quizButtonUrl": "/lp/qualification-quiz",
       "disclaimer": "If spots are available, you will be redirected application form  to reserve your spot"
     }

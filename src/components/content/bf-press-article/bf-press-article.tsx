@@ -112,13 +112,50 @@ export default function BfPressArticle({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Store name in sessionStorage for personalization
-    if (firstName && typeof window !== 'undefined') {
-      sessionStorage.setItem('userName', firstName.trim())
+    // Store form data in sessionStorage
+    if (typeof window !== 'undefined') {
+      if (firstName) {
+        sessionStorage.setItem('userName', firstName.trim())
+      }
+      if (email) {
+        sessionStorage.setItem('userEmail', email.trim())
+      }
     }
     
     // Redirect to bf-press-qualified page
     window.location.href = '/lp/bf-press-qualified'
+  }
+
+  const handleQuizClick = () => {
+    // Validate form inputs
+    if (!firstName || !email) {
+      // If form is not filled, scroll to form or show validation
+      const firstNameInput = document.getElementById('firstName')
+      const emailInput = document.getElementById('email')
+      
+      if (!firstName && firstNameInput) {
+        firstNameInput.focus()
+        return
+      }
+      if (!email && emailInput) {
+        emailInput.focus()
+        return
+      }
+      return
+    }
+    
+    // Store form data in sessionStorage
+    if (typeof window !== 'undefined') {
+      if (firstName) {
+        sessionStorage.setItem('userName', firstName.trim())
+      }
+      if (email) {
+        sessionStorage.setItem('userEmail', email.trim())
+      }
+    }
+    
+    // Redirect to quiz page
+    window.location.href = form.quizButtonUrl || '/lp/qualification-quiz'
   }
 
   const getIcon = (iconName: string) => {
@@ -432,9 +469,7 @@ export default function BfPressArticle({
                   {form.quizButtonText && (
                     <Button
                       type="button"
-                      onClick={() => {
-                        window.location.href = form.quizButtonUrl || '/lp/qualification-quiz'
-                      }}
+                      onClick={handleQuizClick}
                       size="lg"
                       variant="outline"
                       className="w-full border-2 border-gray-300 hover:border-gray-400 text-gray-700 text-xl py-7 font-bold shadow-md hover:shadow-lg transition-all"

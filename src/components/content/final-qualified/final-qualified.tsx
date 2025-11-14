@@ -295,11 +295,11 @@ export default function FinalQualified({
 
         {/* CTA Button */}
         {cta.buttonText && (
-          <div className="my-16 text-center">
+          <div className="my-8 md:my-16 text-center">
             <Button
               onClick={handleCtaClick}
               size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white text-xl py-7 px-12 font-bold shadow-lg hover:shadow-xl transition-all"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-xl py-4 md:py-7 px-4 md:px-12 font-bold shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
             >
               {cta.buttonText}
             </Button>

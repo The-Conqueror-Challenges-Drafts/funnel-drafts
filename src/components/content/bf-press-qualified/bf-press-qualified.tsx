@@ -105,7 +105,7 @@ export default function BfPressQualified({
       </header>
 
       {/* Main Content */}
-      <article className="mx-auto max-w-3xl px-4 py-12">
+      <article className="mx-auto max-w-3xl px-4 py-8 md:py-12 pb-24 md:pb-12">
         <div className="prose prose-lg max-w-none">
           {/* Intro Paragraphs */}
           {intro.paragraphs && intro.paragraphs.map((paragraph, index) => (
@@ -118,8 +118,8 @@ export default function BfPressQualified({
 
           {/* The Logic Is Simple Section */}
           {logic.title && (
-            <div className="my-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{logic.title}</h2>
+            <div className="my-8 md:my-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{logic.title}</h2>
 
               {logic.paragraphs && logic.paragraphs.map((paragraph, index) => (
                 <p 
@@ -158,8 +158,8 @@ export default function BfPressQualified({
 
           {/* Your Mission Section */}
           {mission.title && (
-            <div className="my-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{mission.title}</h2>
+            <div className="my-8 md:my-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{mission.title}</h2>
 
               {mission.intro && (
                 <p className="text-lg text-gray-700 leading-relaxed mb-6">
@@ -186,8 +186,8 @@ export default function BfPressQualified({
 
           {/* Where Will Your First Challenge Take You Section */}
           {challenge.title && (
-            <div className="my-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">{challenge.title}</h2>
+            <div className="my-8 md:my-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6">{challenge.title}</h2>
 
               {challenge.paragraphs && challenge.paragraphs.map((paragraph, index) => (
                 <p 
@@ -200,14 +200,16 @@ export default function BfPressQualified({
             </div>
           )}
         </div>
+      </article>
 
-        {/* CTA Buttons */}
-        <div className="my-16 text-center space-y-4">
+      {/* Sticky CTA Buttons - Mobile Optimized */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50 md:relative md:border-t-0 md:shadow-none md:bg-transparent">
+        <div className="mx-auto max-w-3xl px-4 py-4 md:py-8 text-center space-y-3 md:space-y-4">
           {cta.buttonText && (
             <Button
               onClick={handleCtaClick}
               size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white text-xl py-7 px-12 font-bold shadow-lg hover:shadow-xl transition-all"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-xl py-4 md:py-7 px-4 md:px-12 font-bold shadow-lg hover:shadow-xl transition-all w-full md:w-auto"
             >
               {cta.buttonText}
             </Button>
@@ -223,7 +225,7 @@ export default function BfPressQualified({
                 }}
                 size="lg"
                 variant="outline"
-                className="text-xl py-7 px-12 font-bold border-2 border-gray-300 hover:border-gray-400 transition-all"
+                className="text-base md:text-xl py-4 md:py-7 px-4 md:px-12 font-bold border-2 border-gray-300 hover:border-gray-400 transition-all w-full md:w-auto"
               >
                 {cta.secondaryButtonText}
               </Button>
@@ -231,21 +233,21 @@ export default function BfPressQualified({
           )}
 
           {cta.declineText && (
-            <div className="pt-4">
+            <div className="pt-2">
               <button
                 onClick={() => {
                   if (cta.declineUrl) {
                     window.location.href = cta.declineUrl
                   }
                 }}
-                className="text-gray-600 underline hover:text-gray-800 transition-colors text-base"
+                className="text-gray-600 underline hover:text-gray-800 transition-colors text-sm md:text-base"
               >
                 {cta.declineText}
               </button>
             </div>
           )}
         </div>
-      </article>
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-gray-50 py-8">

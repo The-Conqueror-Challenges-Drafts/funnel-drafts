@@ -161,15 +161,15 @@ export default function BfPressArticle({
 
       {/* Hero Headline with Personalization */}
       {hero.headline && (
-        <section className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-b border-emerald-200 py-12">
+        <section className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-b border-emerald-200 py-6">
           <div className="mx-auto max-w-4xl px-4">
             <div className="text-center">
               {userName ? (
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-balance leading-tight">
+                <h1 className="text-[1.4rem] md:text-[2.1rem] lg:text-[2.8rem] font-bold text-gray-900 mb-6 text-balance leading-tight">
                   {userName.split(' ')[0]}, {hero.headline}
                 </h1>
               ) : (
-                <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 text-balance leading-tight">
+                <h1 className="text-[1.4rem] md:text-[2.1rem] lg:text-[2.8rem] font-bold text-gray-900 mb-6 text-balance leading-tight">
                   {hero.headline}
                 </h1>
               )}

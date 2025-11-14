@@ -70,8 +70,8 @@
         }
       ]
     },
-      "cta": {
-        "buttonText": "Claim Your 50% Subsidized Entry",
+    "cta": {
+      "buttonText": "Claim Your 50% Subsidized Entry",
       "buttonUrl": "",
       "secondaryButtonText": "",
       "secondaryButtonUrl": "",

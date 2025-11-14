@@ -87,7 +87,7 @@
         }
       ],
       "buttonText": "Check Availability - config",
-      "quizButtonText": "Check Availability - quiz",
+      "quizButtonText": "Check Availability - quiz + any code checkout",
       "quizButtonUrl": "/lp/qualification-quiz",
       "disclaimer": "If spots are available, you will be redirected application form  to reserve your spot"
     }

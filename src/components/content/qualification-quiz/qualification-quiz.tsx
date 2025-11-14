@@ -182,14 +182,48 @@ export default function QualificationQuiz({
 
   if (isTransitioning) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-emerald-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-red-50 via-orange-50 to-red-50 flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-center"
+          className="text-center max-w-md w-full"
         >
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-emerald-600 mx-auto mb-4"></div>
-          <p className="text-xl text-gray-700 font-medium">Analyzing your responses...</p>
+          {/* Urgency Banner */}
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            className="bg-red-600 text-white rounded-lg p-4 mb-6 shadow-lg"
+          >
+            <p className="text-lg font-bold animate-pulse">⚠️ URGENT: Spots Filling Fast</p>
+            <p className="text-sm mt-2">Only 3% of subsidized spots remaining</p>
+          </motion.div>
+
+          {/* Loading Animation */}
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+            className="w-20 h-20 border-4 border-red-600 border-t-transparent rounded-full mx-auto mb-6"
+          />
+
+          {/* Urgency Text */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="space-y-4"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+              Analyzing Your Application...
+            </h2>
+            <p className="text-red-600 font-semibold text-lg">
+              ⏱️ Processing your qualification now
+            </p>
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-r-lg mt-4">
+              <p className="text-sm text-gray-700 font-medium">
+                <strong>Hurry!</strong> Subsidized fund is almost depleted. Your spot will be reserved once qualified.
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     );

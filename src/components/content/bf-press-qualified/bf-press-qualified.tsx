@@ -209,7 +209,7 @@ export default function BfPressQualified({
             <Button
               onClick={handleCtaClick}
               size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-xl py-4 md:py-7 px-4 md:px-12 font-bold shadow-lg hover:shadow-xl transition-all w-full md:w-auto flex flex-col items-center justify-center gap-1"
+              className="bg-emerald-600 hover:bg-emerald-700 text-white text-base md:text-xl py-6 md:py-10 px-6 md:px-16 font-bold shadow-lg hover:shadow-xl transition-all w-full md:w-auto flex flex-col items-center justify-center gap-1.5 min-h-[80px] md:min-h-[100px]"
             >
               <span className="text-sm md:text-base font-medium">Claim your 50% subsidized</span>
               <span className="text-lg md:text-2xl font-bold">achieve your 2026 fitness goals</span>

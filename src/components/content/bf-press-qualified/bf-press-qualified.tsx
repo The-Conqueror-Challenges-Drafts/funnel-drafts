@@ -58,6 +58,8 @@ export default function BfPressQualified({
   cta = {}
 }: BfPressQualifiedProps) {
   const [userName, setUserName] = useState<string | null>(null)
+  const [showStickyCta, setShowStickyCta] = useState(false)
+  const thirdStepRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // Get name from sessionStorage
@@ -68,6 +70,30 @@ export default function BfPressQualified({
       }
     }
   }, [])
+
+  useEffect(() => {
+    // Show sticky CTA when user scrolls past the 3rd step on mobile
+    const handleScroll = () => {
+      if (typeof window !== 'undefined' && thirdStepRef.current) {
+        const rect = thirdStepRef.current.getBoundingClientRect()
+        const isMobile = window.innerWidth < 768 // md breakpoint
+        // Show when 3rd step has scrolled past the viewport
+        if (isMobile && rect.bottom <= window.innerHeight) {
+          setShowStickyCta(true)
+        } else if (!isMobile) {
+          // Always show on desktop (relative positioning)
+          setShowStickyCta(true)
+        } else {
+          setShowStickyCta(false)
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    handleScroll() // Check initial position
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [mission.steps])
 
   const handleCtaClick = () => {
     if (cta.buttonUrl) {
@@ -170,7 +196,11 @@ export default function BfPressQualified({
               {mission.steps && mission.steps.length > 0 && (
                 <div className="space-y-6 my-8">
                   {mission.steps.map((step, index) => (
-                    <div key={index} className="flex gap-4 items-start">
+                    <div 
+                      key={index} 
+                      ref={step.number === 3 ? thirdStepRef : null}
+                      className="flex gap-4 items-start"
+                    >
                       <div className="flex-shrink-0 w-10 h-10 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-lg">
                         {step.number}
                       </div>
@@ -203,8 +233,11 @@ export default function BfPressQualified({
       </article>
 
       {/* Sticky CTA Buttons - Mobile Optimized */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50 md:relative md:border-t-0 md:shadow-none md:bg-transparent">
+      <div className={`fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-2xl z-50 md:relative md:border-t-0 md:shadow-none md:bg-transparent transition-transform duration-300 ${
+        showStickyCta ? 'translate-y-0' : 'translate-y-full md:translate-y-0'
+      }`}>
         <div className="mx-auto max-w-3xl px-4 py-4 md:py-8 text-center space-y-3 md:space-y-4">
+          <p className="text-lg md:text-xl text-gray-700 font-medium mb-2">The choice is yours.</p>
           {cta.buttonText && (
             <Button
               onClick={handleCtaClick}
